@@ -13,8 +13,7 @@ const Documents = ({ formData, setFormData, errors }) => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-sm p-8 font-inter">
-            <h2 className="text-2xl font-semibold tracking-tight mb-6">Documents</h2>
+     <div className="flex flex-col p-4">
 
             {/* Personal Documents Section */}
             <div className="mb-8 pb-6">

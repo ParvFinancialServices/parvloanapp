@@ -72,7 +72,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
     };
 
     return (
-       <div className="flex flex-col p-4">
+     <div className="mb-8 pb-6 border-b border-gray-200">
 
             {/* Prerequisits Section */}
             <div className="mb-8 pb-6 border-b border-gray-200">
@@ -175,18 +175,6 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
                         />
                         {errors.alt_phone_no && <p className="text-red-500 text-xs mt-1">{errors.alt_phone_no}</p>}
                     </div>
-                    {/* Email field is not in GoldLoan config's Personal Information */}
-                    {/* <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input
-                            type="email"
-                            id="email"
-                            value={formData.email || ''}
-                            onChange={(e) => handleFieldChange('email', e.target.value)}
-                            className={cn(errors.email && "border-red-500 focus-visible:ring-red-500")}
-                        />
-                        {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-                    </div> */}
                     <div className="space-y-2">
                         <Label htmlFor="pan">PAN Number</Label>
                         <Input
@@ -209,8 +197,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
                         />
                         {errors.dob && <p className="text-red-500 text-xs mt-1">{errors.dob}</p>}
                     </div>
-                    {/* Marital Status and Spouse Name are not in GoldLoan config */}
-                    {/* <div className="space-y-2">
+                    <div className="space-y-2">
                         <Label>Marital Status</Label>
                         <RadioGroup
                             onValueChange={(value) => handleFieldChange('marital_status', value)}
@@ -241,13 +228,13 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
                                 {errors.spouse_name && <p className="text-red-500 text-xs mt-1">{errors.spouse_name}</p>}
                             </div>
                         )}
-                    </div> */}
+                    </div>
                 </div>
             </div>
 
-            {/* Present Address Section */}
+            {/* Permanent Address Section */}
             <div className="mb-8 pb-6 border-b border-gray-200">
-                <h3 className="text-xl font-medium tracking-tight mb-4">Present Address (Fill the address where you are staying currently)</h3>
+                <h3 className="text-xl font-medium tracking-tight mb-4">Permanent Address (Permanent address should be addressed as mentioned on your aadhar card)</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2 col-span-full flex items-center">
                         <Checkbox
@@ -258,94 +245,6 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
                         <Label htmlFor="same_as_permanent_address" className="ml-2">Same as Permanent Address</Label>
                     </div>
 
-                    {!formData.same_as_permanent_address && (
-                        <>
-                            <div className="space-y-2">
-                                <Label htmlFor="present_building_name">Building/House Name</Label>
-                                <Input
-                                    type="text"
-                                    id="present_building_name"
-                                    value={formData.present_building_name || ''}
-                                    onChange={(e) => handleFieldChange('present_building_name', e.target.value)}
-                                    className={cn(errors.present_building_name && "border-red-500 focus-visible:ring-red-500")}
-                                />
-                                {errors.present_building_name && <p className="text-red-500 text-xs mt-1">{errors.present_building_name}</p>}
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="present_street_name">Street/Road Name</Label>
-                                <Input
-                                    type="text"
-                                    id="present_street_name"
-                                    value={formData.present_street_name || ''}
-                                    onChange={(e) => handleFieldChange('present_street_name', e.target.value)}
-                                    className={cn(errors.present_street_name && "border-red-500 focus-visible:ring-red-500")}
-                                />
-                                {errors.present_street_name && <p className="text-red-500 text-xs mt-1">{errors.present_street_name}</p>}
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="present_landmark">Landmark</Label>
-                                <Input
-                                    type="text"
-                                    id="present_landmark"
-                                    value={formData.present_landmark || ''}
-                                    onChange={(e) => handleFieldChange('present_landmark', e.target.value)}
-                                    className={cn(errors.present_landmark && "border-red-500 focus-visible:ring-red-500")}
-                                />
-                                {errors.present_landmark && <p className="text-red-500 text-xs mt-1">{errors.present_landmark}</p>}
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="present_city">City</Label>
-                                <Input
-                                    type="text"
-                                    id="present_city"
-                                    value={formData.present_city || ''}
-                                    onChange={(e) => handleFieldChange('present_city', e.target.value)}
-                                    className={cn(errors.present_city && "border-red-500 focus-visible:ring-red-500")}
-                                />
-                                {errors.present_city && <p className="text-red-500 text-xs mt-1">{errors.present_city}</p>}
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="present_district">District</Label>
-                                <Input
-                                    type="text"
-                                    id="present_district"
-                                    value={formData.present_district || ''}
-                                    onChange={(e) => handleFieldChange('present_district', e.target.value)}
-                                    className={cn(errors.present_district && "border-red-500 focus-visible:ring-red-500")}
-                                />
-                                {errors.present_district && <p className="text-red-500 text-xs mt-1">{errors.present_district}</p>}
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="present_state">State</Label>
-                                <Input
-                                    type="text"
-                                    id="present_state"
-                                    value={formData.present_state || ''}
-                                    onChange={(e) => handleFieldChange('present_state', e.target.value)}
-                                    className={cn(errors.present_state && "border-red-500 focus-visible:ring-red-500")}
-                                />
-                                {errors.present_state && <p className="text-red-500 text-xs mt-1">{errors.present_state}</p>}
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="present_pincode">Pincode</Label>
-                                <Input
-                                    type="text"
-                                    id="present_pincode"
-                                    value={formData.present_pincode || ''}
-                                    onChange={(e) => handleFieldChange('present_pincode', e.target.value)}
-                                    className={cn(errors.present_pincode && "border-red-500 focus-visible:ring-red-500")}
-                                />
-                                {errors.present_pincode && <p className="text-red-500 text-xs mt-1">{errors.present_pincode}</p>}
-                            </div>
-                        </>
-                    )}
-                </div>
-            </div>
-
-            {/* Permanent Address Section */}
-            <div className="mb-8 pb-6">
-                <h3 className="text-xl font-medium tracking-tight mb-4">Permanent Address (Permanent address should be addressed as mentioned on your aadhar card)</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                         <Label htmlFor="permanent_building_name">Building/House Name</Label>
                         <Input
@@ -425,6 +324,92 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
                     </div>
                 </div>
             </div>
+
+            {/* Present Address Section (Conditional based on same_as_permanent_address) */}
+            {!formData.same_as_permanent_address && (
+                <div className="mb-8 pb-6">
+                    <h3 className="text-xl font-medium tracking-tight mb-4">Present Address (Fill the address where you are staying currently)</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                            <Label htmlFor="present_building_name">Building/House Name</Label>
+                            <Input
+                                type="text"
+                                id="present_building_name"
+                                value={formData.present_building_name || ''}
+                                onChange={(e) => handleFieldChange('present_building_name', e.target.value)}
+                                className={cn(errors.present_building_name && "border-red-500 focus-visible:ring-red-500")}
+                            />
+                            {errors.present_building_name && <p className="text-red-500 text-xs mt-1">{errors.present_building_name}</p>}
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="present_street_name">Street/Road Name</Label>
+                            <Input
+                                type="text"
+                                id="present_street_name"
+                                value={formData.present_street_name || ''}
+                                onChange={(e) => handleFieldChange('present_street_name', e.target.value)}
+                                className={cn(errors.present_street_name && "border-red-500 focus-visible:ring-red-500")}
+                            />
+                            {errors.present_street_name && <p className="text-red-500 text-xs mt-1">{errors.present_street_name}</p>}
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="present_landmark">Landmark</Label>
+                            <Input
+                                type="text"
+                                id="present_landmark"
+                                value={formData.present_landmark || ''}
+                                onChange={(e) => handleFieldChange('present_landmark', e.target.value)}
+                                className={cn(errors.present_landmark && "border-red-500 focus-visible:ring-red-500")}
+                            />
+                            {errors.present_landmark && <p className="text-red-500 text-xs mt-1">{errors.present_landmark}</p>}
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="present_city">City</Label>
+                            <Input
+                                type="text"
+                                id="present_city"
+                                value={formData.present_city || ''}
+                                onChange={(e) => handleFieldChange('present_city', e.target.value)}
+                                className={cn(errors.present_city && "border-red-500 focus-visible:ring-red-500")}
+                            />
+                            {errors.present_city && <p className="text-red-500 text-xs mt-1">{errors.present_city}</p>}
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="present_district">District</Label>
+                            <Input
+                                type="text"
+                                id="present_district"
+                                value={formData.present_district || ''}
+                                onChange={(e) => handleFieldChange('present_district', e.target.value)}
+                                className={cn(errors.present_district && "border-red-500 focus-visible:ring-red-500")}
+                            />
+                            {errors.present_district && <p className="text-red-500 text-xs mt-1">{errors.present_district}</p>}
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="present_state">State</Label>
+                            <Input
+                                type="text"
+                                id="present_state"
+                                value={formData.present_state || ''}
+                                onChange={(e) => handleFieldChange('present_state', e.target.value)}
+                                className={cn(errors.present_state && "border-red-500 focus-visible:ring-red-500")}
+                            />
+                            {errors.present_state && <p className="text-red-500 text-xs mt-1">{errors.present_state}</p>}
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="present_pincode">Pincode</Label>
+                            <Input
+                                type="text"
+                                id="present_pincode"
+                                value={formData.present_pincode || ''}
+                                onChange={(e) => handleFieldChange('present_pincode', e.target.value)}
+                                className={cn(errors.present_pincode && "border-red-500 focus-visible:ring-red-500")}
+                            />
+                            {errors.present_pincode && <p className="text-red-500 text-xs mt-1">{errors.present_pincode}</p>}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
