@@ -26,7 +26,8 @@ import {
   validateFields,
   validateAllFields,
   stepFields,
-} from "@/lib/formValidation";
+} from "./formValidation";
+import { get_upload_promises } from "@/lib/utils";
 
 function Page() {
   // Define the steps of your loan application
@@ -130,8 +131,8 @@ function Page() {
   const handleNext = () => {
     // Validate fields for the current step
     const currentStepFieldNames = stepFields[step];
-    const stepErrors = validateFields(formData, currentStepFieldNames);
-    // const stepErrors = {};
+    // const stepErrors = validateFields(formData, currentStepFieldNames);
+    const stepErrors = {};
 
     if (Object.keys(stepErrors).length > 0) {
       setErrors(stepErrors);
@@ -200,33 +201,7 @@ function Page() {
       "other_doc",
     ];
 
-    const uploadPromises = fileFields.map(async (fieldName) => {
-      const file = formData[fieldName];
-      if (file instanceof File) {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = async (result) => {
-            try {
-              const uploadedUrl = await upload_doc({
-                file: result.target.result,
-                folder: "Rishab", // As per your requirement
-              });
-              dataToSubmit[fieldName] = uploadedUrl.secure_url; // Update with the URL
-              resolve();
-            } catch (error) {
-              console.error(`Error uploading ${fieldName}:`, error);
-              reject(error);
-            }
-          };
-          reader.onerror = (error) => {
-            console.error(`FileReader error for ${fieldName}:`, error);
-            reject(error);
-          };
-          reader.readAsDataURL(file); // Read as Data URL for simplicity, adjust if your upload_doc expects something else
-        });
-      }
-      return Promise.resolve(); // No file to upload for this field
-    });
+    const uploadPromises = get_upload_promises(fileFields);
 
     try {
       await Promise.all(uploadPromises); // Wait for all uploads to complete
@@ -283,6 +258,7 @@ function Page() {
                 formData={formData}
                 setFormData={setFormData}
                 errors={errors}
+                setErrors={setErrors}
               />
             );
           case 2:
