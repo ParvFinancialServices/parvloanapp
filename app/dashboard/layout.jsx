@@ -75,7 +75,7 @@ const Layout = ({ children }) => {
                 orientation="vertical"
                 className="mr-2 data-[orientation=vertical]:h-4"
               />
-              <Breadcrumb>
+              {/* <Breadcrumb>
                 <BreadcrumbList>
                   <BreadcrumbItem className="hidden md:block">
                     <BreadcrumbLink href="#">Loans</BreadcrumbLink>
@@ -85,7 +85,7 @@ const Layout = ({ children }) => {
                     <BreadcrumbPage> Personal Loan</BreadcrumbPage>
                   </BreadcrumbItem>
                 </BreadcrumbList>
-              </Breadcrumb>
+              </Breadcrumb> */}
             </div>
           </header>
           {children}
