@@ -127,6 +127,9 @@ export const loanApplicationSchema = z
     needs_of_documents: z.array(z.string()).optional(), // Conditional logic in superRefine, multi-select
 
     // Document Uploads
+    photo: z
+      .any()
+      .refine((val) => val instanceof File, "Photo is required."),
     aadhar_front: z
       .any()
       .refine((val) => val instanceof File, "Aadhar Front image is required."),
