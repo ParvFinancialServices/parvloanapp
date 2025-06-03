@@ -1,104 +1,11 @@
-// "use client";
-
-// // import { createDSAAccount } from "@/api/file_action";
-// // import Footer from "@/comp/Home/Footer";
-// // import NavbarNew from "@/comp/Navbar/Navbar";
-// // import { StepForm } from "@/comp/StepForm";
-// import { Button } from "@/components/ui/button";
-// // import {
-// //   AccountCreationSchema,
-// //   DSAAccountCreation,
-// // } from "@/config/forms/AccountCreation";
-// import { removeProperty, updateErrors } from "@/lib/utils";
-// import { cloneDeep } from "lodash";
-// import { useEffect } from "react";
-// import { useState } from "react";
-// import { Dialog, DialogContent } from "@/components/ui/dialog";
-// import { Loader2Icon } from "lucide-react";
-// import NavbarNew from "@/components/common/Navbar";
-// import Footer from "@/components/common/Footer";
-
-// const ApplyForDSA = () => {
-//   const [state, setState] = useState(DSAAccountCreation);
-//   const [validationErrors, setValidationErrors] = useState([]);
-//   const [isLoading, setIsLoading] = useState(false);
-
-//   useEffect(() => {
-//     return () => {
-//       setIsLoading(false);
-//     };
-//   }, []);
-
-//   // const onSubmit = async (e) => {
-//   //   if (process.env.NEXT_PUBLIC_TEST_MODE == "true") {
-//   //     setIsLoading(true);
-//   //     let data = cloneDeep(state);
-//   //     // removeProperty(data, "type");
-//   //     // removeProperty(data, "options");
-//   //     setTimeout(() => {
-//   //       createDSAAccount(state);
-//   //     }, 4000);
-//   //   } else {
-//   //     AccountCreationSchema.validate(state, { abortEarly: false })
-//   //       .then(async () => {
-//   //         let data = cloneDeep(state);
-//   //         // removeProperty(data, "type");
-//   //         // removeProperty(data, "options");
-//   //         createDSAAccount(state);
-//   //       })
-//   //       .catch((e) => {
-//   //         let newState = updateErrors(state, validationErrors, e);
-
-//   //         // we are storing the reference of the current error so that on next submission of form we can remove it
-//   //         setValidationErrors(e.inner);
-
-//   //         // finally we are updating the state
-//   //         setState(newState);
-//   //       });
-//   //   }
-//   // };
-//   return (
-//     <div>
-//       <NavbarNew />
-//       <section className="flex flex-col p-4 items-center mt-[100px]">
-//         <header className="font-semibold text-2xl p-4">Create Account</header>
-//         <div className="p-4 max-w-[60vw] min-w-[300px] flex items-center justify-center flex-col">
-//           {/* <StepForm state={state} setState={setState} step={0} /> */}
-//           <div className="flex items-center justify-end p-4 w-full">
-//             <Button type="button" onClick={onSubmit}>
-//               submit
-//             </Button>
-//           </div>
-//         </div>
-//       </section>
-//       <Footer />
-//       <Dialog open={isLoading}>
-//         <DialogContent className="sm:max-w-md">
-//           <div className="flex items-center justify-center">
-//             <Loader2Icon color="black" className="animate-spin" />
-//           </div>
-//         </DialogContent>
-//       </Dialog>
-//     </div>
-//   );
-// };
-
-// export default ApplyForDSA;
-
-
-
-
-
-
-
-
-
 'use client'
-
 import Footer from "@/components/common/Footer";
 import NavbarNew from "@/components/common/Navbar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { submitDSAForm } from "@/lib/actions/dsa";
 import { useState } from "react";
-// import { submitDSAForm } from "./firebaseActions";
 
 const SimpleDSAForm = () => {
   const [form, setForm] = useState({
@@ -118,58 +25,201 @@ const SimpleDSAForm = () => {
     work_location: "",
     bank_account_no: "",
     bank_branch: "",
+
+    // documents
+    aadhar: undefined,
+    pan: undefined,
+    photo: undefined,
+    bank_doc: undefined,
+    education_certificate: undefined,
   });
 
+
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { id, files, value, type } = e.target;
+    const inputValue = type === "file" ? files[0] : value;
+
+    setForm((prev) => ({
+      ...prev,
+      [id]: inputValue,
+    }));
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   await submitDSAForm(form);
-  //   alert("Form submitted!");
-  // };
+  const submitForm = async() => {
+    try {
+      const result = await submitDSAForm(form);
+      console.log(result);
+      alert("submitted")
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
-    <>
-    <NavbarNew/>
-      <form
-      // onSubmit={handleSubmit}
-      >
-        <h2>Create New Account</h2>
+    <div className="my-20">
+      <NavbarNew />
+      {/* <form> */}
+        <div className="max-w-7xl border my-6 p-6 gap-4 rounded-2xl mx-auto">
+          <h2 className="text-center text-2xl font-bold pb-6">Create New Account</h2>
+          <div className=" grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3 ">
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"> */}
+            {/* Full Name */}
+            <div className="space-y-2 w-full">
+              <Label htmlFor="full_name">Full Name</Label>
+              <Input id="full_name" name="full_name" type="text" onChange={handleChange} />
+            </div>
 
-        <input name="full_name" placeholder="Full Name" required onChange={handleChange} />
-        <input name="guardian_name" placeholder="Guardian's Name" required onChange={handleChange} />
-        <input name="dob" type="date" required onChange={handleChange} />
+            {/* Guardian Name */}
+            <div className="space-y-2">
+              <Label htmlFor="guardian_name">Guardian Name</Label>
+              <Input id="guardian_name" name="guardian_name" type="text" onChange={handleChange} />
+            </div>
 
-        <select name="gender" onChange={handleChange}>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Others">Others</option>
-        </select>
+            {/* Date of Birth */}
+            <div className="space-y-2">
+              <Label htmlFor="dob">Date of Birth</Label>
+              <Input id="dob" name="dob" type="date" onChange={handleChange} />
+            </div>
 
-        <select name="marital_status" onChange={handleChange}>
-          <option value="Married">Married</option>
-          <option value="Unmarried">Unmarried</option>
-        </select>
+            {/* Gender */}
+            <div className="space-y-2">
+              <Label htmlFor="gender">Gender</Label>
+              <select
+                id="gender"
+                name="gender"
+                onChange={handleChange}
+                className="w-full border rounded px-3 py-2"
+              >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
 
-        <input name="phone_no" placeholder="Phone Number" required onChange={handleChange} />
-        <input name="alt_phone_no" placeholder="Alternate Phone Number" required onChange={handleChange} />
-        <input name="email" placeholder="Email" required onChange={handleChange} />
-        <input name="aadhar_no" placeholder="Aadhar Number" required onChange={handleChange} />
-        <input name="pan_no" placeholder="PAN Number" required onChange={handleChange} />
-        <input name="present_address" placeholder="Present Address" required onChange={handleChange} />
-        <input name="permanent_address" placeholder="Permanent Address" required onChange={handleChange} />
+            {/* Marital Status */}
+            <div className="space-y-2">
+              <Label htmlFor="marital_status">Marital Status</Label>
+              <select
+                id="marital_status"
+                name="marital_status"
+                onChange={handleChange}
+                className="w-full border rounded px-3 py-2"
+              >
+                <option value="Unmarried">Unmarried</option>
+                <option value="Married">Married</option>
+              </select>
+            </div>
 
-        <input name="date_of_joining" type="date" required onChange={handleChange} />
-        <input name="work_location" placeholder="Work Location" required onChange={handleChange} />
-        <input name="bank_account_no" placeholder="Bank Account Number" required onChange={handleChange} />
-        <input name="bank_branch" placeholder="Bank Branch Name" required onChange={handleChange} />
+            {/* Phone No */}
+            <div className="space-y-2">
+              <Label htmlFor="phone_no">Phone No</Label>
+              <Input id="phone_no" name="phone_no" type="tel" onChange={handleChange} />
+            </div>
 
-        <button type="submit">Submit</button>
-      </form>
-      <Footer/>
-    </>
+            {/* Alternate Phone No */}
+            <div className="space-y-2">
+              <Label htmlFor="alt_phone_no">Alternate Phone No</Label>
+              <Input id="alt_phone_no" name="alt_phone_no" type="tel" onChange={handleChange} />
+            </div>
+
+            {/* Email */}
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" name="email" type="email" onChange={handleChange} />
+            </div>
+
+            {/* Aadhar No */}
+            <div className="space-y-2">
+              <Label htmlFor="aadhar_no">Aadhar No</Label>
+              <Input id="aadhar_no" name="aadhar_no" type="text" onChange={handleChange} />
+            </div>
+
+            {/* PAN No */}
+            <div className="space-y-2">
+              <Label htmlFor="pan_no">PAN No</Label>
+              <Input id="pan_no" name="pan_no" type="text" onChange={handleChange} />
+            </div>
+
+            {/* Present Address */}
+            <div className="space-y-2 col-span-full">
+              <Label htmlFor="present_address">Present Address</Label>
+              <Input id="present_address" name="present_address" type="text" onChange={handleChange} />
+            </div>
+
+            {/* Permanent Address */}
+            <div className="space-y-2 col-span-full">
+              <Label htmlFor="permanent_address">Permanent Address</Label>
+              <Input id="permanent_address" name="permanent_address" type="text" onChange={handleChange} />
+            </div>
+
+            {/* Date of Joining */}
+            <div className="space-y-2">
+              <Label htmlFor="date_of_joining">Date of Joining</Label>
+              <Input id="date_of_joining" name="date_of_joining" type="date" onChange={handleChange} />
+            </div>
+
+            {/* Work Location */}
+            <div className="space-y-2">
+              <Label htmlFor="work_location">Work Location</Label>
+              <Input id="work_location" name="work_location" type="text" onChange={handleChange} />
+            </div>
+
+            {/* Bank Account No */}
+            <div className="space-y-2">
+              <Label htmlFor="bank_account_no">Bank Account No</Label>
+              <Input id="bank_account_no" name="bank_account_no" type="text" onChange={handleChange} />
+            </div>
+
+            {/* Bank Branch */}
+            <div className="space-y-2">
+              <Label htmlFor="bank_branch">Bank Branch</Label>
+              <Input id="bank_branch" name="bank_branch" type="text" onChange={handleChange} />
+            </div>
+            {/* </div> */}
+
+            {/* --- Documents Section --- */}
+            <div className="col-span-full">
+              <h2 className="text-lg font-semibold mt-6 mb-2">Documents</h2>
+            </div>
+
+            {/* Aadhar */}
+            <div className="space-y-2">
+              <Label htmlFor="aadhar">Aadhar</Label>
+              <Input id="aadhar" name="aadhar" type="file" onChange={handleChange} />
+            </div>
+
+            {/* PAN */}
+            <div className="space-y-2">
+              <Label htmlFor="pan">PAN</Label>
+              <Input id="pan" name="pan" type="file" onChange={handleChange} />
+            </div>
+
+            {/* Photo */}
+            <div className="space-y-2">
+              <Label htmlFor="photo">Photo</Label>
+              <Input id="photo" name="photo" type="file"  onChange={handleChange} />
+            </div>
+
+            {/* Bank Document */}
+            <div className="space-y-2">
+              <Label htmlFor="bank_doc">Passbook Photo / Cancelled Cheque</Label>
+              <Input id="bank_doc" name="bank_doc" type="file"  onChange={handleChange} />
+            </div>
+
+            {/* Education Certificate (optional) */}
+            <div className="space-y-2">
+              <Label htmlFor="education_certificate">Education Certificate</Label>
+              <Input id="education_certificate" name="education_certificate" type="file" onChange={handleChange} />
+            </div>
+          </div>
+
+          <div className="w-full mx-auto flex justify-center my-5">
+            <Button className={'bg-primary text-white mx-auto cursor-pointer'} onClick={submitForm} >Submit</Button>
+          </div>
+        </div>
+      {/* </form> */}
+      <Footer />
+    </div>
 
   );
 };
