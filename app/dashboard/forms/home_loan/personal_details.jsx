@@ -428,10 +428,160 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
         </div>
       </div>
 
+      {/* Permanent Address Section */}
+      <div className="mb-8 pb-6">
+        <h3 className="text-xl font-medium tracking-tight mb-4">
+          Permanent Address (Permanent address should be addressed as mentioned
+          on your aadhar card)
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label htmlFor="permanent_building_name">Building/House Name</Label>
+            <Input
+              type="text"
+              id="permanent_building_name"
+              value={formData.permanent_building_name || ""}
+              onChange={(e) =>
+                handleFieldChange("permanent_building_name", e.target.value)
+              }
+              className={cn(
+                errors.permanent_building_name &&
+                  "border-red-500 focus-visible:ring-red-500"
+              )}
+            />
+            {errors.permanent_building_name && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.permanent_building_name}
+              </p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="permanent_street_name">Street/Road Name</Label>
+            <Input
+              type="text"
+              id="permanent_street_name"
+              value={formData.permanent_street_name || ""}
+              onChange={(e) =>
+                handleFieldChange("permanent_street_name", e.target.value)
+              }
+              className={cn(
+                errors.permanent_street_name &&
+                  "border-red-500 focus-visible:ring-red-500"
+              )}
+            />
+            {errors.permanent_street_name && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.permanent_street_name}
+              </p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="permanent_landmark">Landmark</Label>
+            <Input
+              type="text"
+              id="permanent_landmark"
+              value={formData.permanent_landmark || ""}
+              onChange={(e) =>
+                handleFieldChange("permanent_landmark", e.target.value)
+              }
+              className={cn(
+                errors.permanent_landmark &&
+                  "border-red-500 focus-visible:ring-red-500"
+              )}
+            />
+            {errors.permanent_landmark && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.permanent_landmark}
+              </p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="permanent_city">City</Label>
+            <Input
+              type="text"
+              id="permanent_city"
+              value={formData.permanent_city || ""}
+              onChange={(e) =>
+                handleFieldChange("permanent_city", e.target.value)
+              }
+              className={cn(
+                errors.permanent_city &&
+                  "border-red-500 focus-visible:ring-red-500"
+              )}
+            />
+            {errors.permanent_city && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.permanent_city}
+              </p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="permanent_district">District</Label>
+            <Input
+              type="text"
+              id="permanent_district"
+              value={formData.permanent_district || ""}
+              onChange={(e) =>
+                handleFieldChange("permanent_district", e.target.value)
+              }
+              className={cn(
+                errors.permanent_district &&
+                  "border-red-500 focus-visible:ring-red-500"
+              )}
+            />
+            {errors.permanent_district && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.permanent_district}
+              </p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="permanent_state">State</Label>
+            <Input
+              type="text"
+              id="permanent_state"
+              value={formData.permanent_state || ""}
+              onChange={(e) =>
+                handleFieldChange("permanent_state", e.target.value)
+              }
+              className={cn(
+                errors.permanent_state &&
+                  "border-red-500 focus-visible:ring-red-500"
+              )}
+            />
+            {errors.permanent_state && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.permanent_state}
+              </p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="permanent_pincode">Pincode</Label>
+            <Input
+              type="text"
+              id="permanent_pincode"
+              value={formData.permanent_pincode || ""}
+              onChange={(e) =>
+                handleFieldChange("permanent_pincode", e.target.value)
+              }
+              className={cn(
+                errors.permanent_pincode &&
+                  "border-red-500 focus-visible:ring-red-500"
+              )}
+            />
+            {errors.permanent_pincode && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.permanent_pincode}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+
       {/* Present Address Section */}
       <div className="mb-8 pb-6 border-b border-gray-200">
         <h3 className="text-xl font-medium tracking-tight mb-4">
-          Present Address (Fill the address where you are staying currently)
+          Present Address <span className="text-sm text-red-400">(Fill the address where you are staying currently)</span>
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2 col-span-full flex items-center">
@@ -596,155 +746,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
         </div>
       </div>
 
-      {/* Permanent Address Section */}
-      <div className="mb-8 pb-6">
-        <h3 className="text-xl font-medium tracking-tight mb-4">
-          Permanent Address (Permanent address should be addressed as mentioned
-          on your aadhar card)
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <Label htmlFor="permanent_building_name">Building/House Name</Label>
-            <Input
-              type="text"
-              id="permanent_building_name"
-              value={formData.permanent_building_name || ""}
-              onChange={(e) =>
-                handleFieldChange("permanent_building_name", e.target.value)
-              }
-              className={cn(
-                errors.permanent_building_name &&
-                  "border-red-500 focus-visible:ring-red-500"
-              )}
-            />
-            {errors.permanent_building_name && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.permanent_building_name}
-              </p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="permanent_street_name">Street/Road Name</Label>
-            <Input
-              type="text"
-              id="permanent_street_name"
-              value={formData.permanent_street_name || ""}
-              onChange={(e) =>
-                handleFieldChange("permanent_street_name", e.target.value)
-              }
-              className={cn(
-                errors.permanent_street_name &&
-                  "border-red-500 focus-visible:ring-red-500"
-              )}
-            />
-            {errors.permanent_street_name && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.permanent_street_name}
-              </p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="permanent_landmark">Landmark</Label>
-            <Input
-              type="text"
-              id="permanent_landmark"
-              value={formData.permanent_landmark || ""}
-              onChange={(e) =>
-                handleFieldChange("permanent_landmark", e.target.value)
-              }
-              className={cn(
-                errors.permanent_landmark &&
-                  "border-red-500 focus-visible:ring-red-500"
-              )}
-            />
-            {errors.permanent_landmark && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.permanent_landmark}
-              </p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="permanent_city">City</Label>
-            <Input
-              type="text"
-              id="permanent_city"
-              value={formData.permanent_city || ""}
-              onChange={(e) =>
-                handleFieldChange("permanent_city", e.target.value)
-              }
-              className={cn(
-                errors.permanent_city &&
-                  "border-red-500 focus-visible:ring-red-500"
-              )}
-            />
-            {errors.permanent_city && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.permanent_city}
-              </p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="permanent_district">District</Label>
-            <Input
-              type="text"
-              id="permanent_district"
-              value={formData.permanent_district || ""}
-              onChange={(e) =>
-                handleFieldChange("permanent_district", e.target.value)
-              }
-              className={cn(
-                errors.permanent_district &&
-                  "border-red-500 focus-visible:ring-red-500"
-              )}
-            />
-            {errors.permanent_district && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.permanent_district}
-              </p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="permanent_state">State</Label>
-            <Input
-              type="text"
-              id="permanent_state"
-              value={formData.permanent_state || ""}
-              onChange={(e) =>
-                handleFieldChange("permanent_state", e.target.value)
-              }
-              className={cn(
-                errors.permanent_state &&
-                  "border-red-500 focus-visible:ring-red-500"
-              )}
-            />
-            {errors.permanent_state && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.permanent_state}
-              </p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="permanent_pincode">Pincode</Label>
-            <Input
-              type="text"
-              id="permanent_pincode"
-              value={formData.permanent_pincode || ""}
-              onChange={(e) =>
-                handleFieldChange("permanent_pincode", e.target.value)
-              }
-              className={cn(
-                errors.permanent_pincode &&
-                  "border-red-500 focus-visible:ring-red-500"
-              )}
-            />
-            {errors.permanent_pincode && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.permanent_pincode}
-              </p>
-            )}
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 };

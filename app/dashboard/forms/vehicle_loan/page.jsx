@@ -25,6 +25,7 @@ import { upload_doc } from "@/lib/actions/file"; // Keep if file uploads are nee
 import { setLoanData } from "@/lib/actions/loan";
 import { useUserState } from "../../store";
 import { cn } from "@/lib/utils";
+import Documents from "./documents";
 
 const App = () => {
   const [step, setStep] = useState(0);
@@ -37,6 +38,11 @@ const App = () => {
     estimated_cost: "",
     loan_you_need: "",
     profession: "", // "Job", "Business", "Others"
+
+    // co-applicant details
+    co_applicant_dob:"",
+    co_applicant_name:"",
+    co_occupation:"",
 
     // Personal Details
     loan_amount: "", // Note: This is also in Vehicle Details, but keeping it flat here for simplicity
@@ -105,7 +111,36 @@ const App = () => {
     needs_of_documents: [], // Multi-select checkbox values
 
     // Documents (No explicit document section in config, assuming no file uploads for now)
-    // If file uploads are needed, they would be added here and in fileFields.
+    applicant_selfie:"",
+    aadhar_front:"",
+    aadhar_back:"",
+    personal_pan:"",
+    address_prooof:"",
+    coapplicant_aadhar_front:"",
+    coapplicant_aadhar_back:"",
+    coapplicant_pan:"",
+    salary_slip_1:"",
+    salary_slip_2:"",
+    salary_slip_3:"",
+    form_16_itr_1:"",
+    form_16_itr_2:"",
+    electricity_bill:"",
+    business_images:"",
+    business_proof:"",
+    itr_1:"",
+    itr_2:"",
+    another_1:"",
+    another_2:"",
+    another_3:"",
+
+    sale_deed:"",
+    mutation:"",
+    rashid:"",
+    lpc:"",
+    property_pic:"",
+    property_map:"",
+    chain_deed:"",
+
   });
 
   const [errors, setErrors] = useState({});
@@ -119,6 +154,7 @@ const App = () => {
     { id: "vehicle_details", title: "Vehicle Details" },
     { id: "personal_details", title: "Personal Details" },
     { id: "employment", title: "Employment & Loans" },
+    { id: "documents", title: "Documents" },
   ];
 
   const totalSteps = formSteps.length;
@@ -192,6 +228,9 @@ const App = () => {
       "have_17_kahta_agri_land",
       "needs_of_documents", // Property Information
     ],
+    4:[
+      "abhisel"
+    ]
   };
 
   // No file uploads explicitly defined in VehicleLoan config, so this array is empty
@@ -254,6 +293,14 @@ const App = () => {
       case "employment":
         return (
           <Employment
+            formData={formData}
+            setFormData={setFormData}
+            errors={errors}
+          />
+        );
+      case "documents":
+        return (
+          <Documents
             formData={formData}
             setFormData={setFormData}
             errors={errors}
@@ -351,6 +398,7 @@ const App = () => {
           "Vehicle Details",
           "Personal Details",
           "Employment & Loans",
+          "Documents",
         ]}
         step={step}
       />
