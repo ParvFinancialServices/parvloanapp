@@ -1,9 +1,9 @@
 "use client";
 
-import { login } from "@/lib/actions/login.js"; 
+import { login } from "@/lib/actions/login.js";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
-import { useUserState } from "../dashboard/store/index"; 
+import { useUserState } from "../dashboard/store/index";
 import { useRouter } from "next/navigation";
 import { getAuth, signInWithCustomToken } from "firebase/auth";
 import app from "@/lib/firebaseConfig";
@@ -12,11 +12,14 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Loader2Icon } from "lucide-react";
+import { EyeOff } from "lucide-react";
+import { Eye } from "lucide-react";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null); // State for displaying error messages
 
   const router = useRouter();
@@ -99,45 +102,73 @@ export default function LoginPage() {
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <div className="flex flex-1 items-center justify-center">
           <form
-            className="flex flex-col gap-4 w-full max-w-xs items-start"
+            className="flex flex-col border p-10 rounded-2xl w-[30rem] max-w-md items-start"
             onSubmit={handleSubmit} // Use the new handleSubmit function
           >
-            <h1 className="text-3xl font-bold">Login</h1>{" "}
+            {/* logo */}
+            <div className="flex items-center justify-center w-full pb-3 space-x-1 rtl:space-x-reverse">
+              <img src={'/logo/PAR2.png'} className="h-10" alt="Logo" />
+              <div className="flex flex-col justify-start">
+                <span className=" text-2xl text-slate-600 font-semibold whitespace-nowrap leading-5 dark:text-white">PARV</span>
+                <span className="text-[0.6rem] text-blue-600">Financial Services</span>
+              </div>
+            </div>
+            <div className="mb-6 w-full">
+              <h1 className="text-3xl text-center w-full font-bold">Welcome</h1>{" "}
+              <p className="text-center w-full">Login to your account</p>
+            </div>
+
             {/* Added font-bold for better heading */}
-            <Label htmlFor="username">Username</Label>
-            <Input
-              id="username"
-              value={username} // Controlled input
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-            <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              type="password"
-              value={password} // Controlled input
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            {error && (
-              <p className="text-red-500 text-sm">{error}</p> // Display error message
-            )}
-            <Link
-              href="/forget-password"
-              className="text-blue-900 underline text-sm"
-            >
-              forget password?
-            </Link>
-            <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? (
-                <>
-                  <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
-                  Please wait
-                </>
-              ) : (
-                "Login"
-              )}
-            </Button>
+            <div className="w-full gap-4 space-y-2">
+              <Label htmlFor="username">Username</Label>
+              <Input
+                id="username"
+                value={username} // Controlled input
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Enter your user Id"
+                required
+              />
+              {/* password */}
+              <div className="relative space-y-2">
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  id="password"
+                  type={showPassword?"text":"password"}
+                  value={password} // Controlled input
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="***********"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/8 cursor-pointer text-gray-500 hover:text-gray-700 focus:outline-none"
+                  tabIndex={-1}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+                {error && (
+                  <p className="text-red-500 text-sm">{error}</p> // Display error message
+                )}
+              </div>
+
+              <Link
+                href="/forget-password"
+                className="text-blue-900 hover:underline text-sm text-center w-full"
+              >
+                Forgot your password?
+              </Link>
+              <Button type="submit" className="w-full mt-4" disabled={isLoading}>
+                {isLoading ? (
+                  <>
+                    <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
+                    Please wait
+                  </>
+                ) : (
+                  "Login"
+                )}
+              </Button>
+            </div>
           </form>
         </div>
       </div>

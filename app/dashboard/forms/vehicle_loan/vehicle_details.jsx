@@ -28,7 +28,7 @@ const VehicleDetails = ({ formData, setFormData, errors }) => {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <Label htmlFor="which_vehicle">Select vehicle loan type?</Label>
+            <Label htmlFor="which_vehicle">Select vehicle loan type?<span className='text-red-500'>*</span></Label>
             <Select
               onValueChange={(value) =>
                 handleFieldChange("which_vehicle", value)
@@ -74,6 +74,7 @@ const VehicleDetails = ({ formData, setFormData, errors }) => {
           <div className="space-y-2">
             <Label htmlFor="when_purchase">
               When you have to purchase vehicle?
+              <span className='text-red-500'>*</span>
             </Label>
             <Select
               onValueChange={(value) =>
@@ -108,6 +109,7 @@ const VehicleDetails = ({ formData, setFormData, errors }) => {
           <div className="space-y-2">
             <Label htmlFor="estimated_cost">
               What is estimated cost of vehicle?
+              <span className='text-red-500'>*</span>
             </Label>
             <Select
               onValueChange={(value) =>
@@ -143,7 +145,7 @@ const VehicleDetails = ({ formData, setFormData, errors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="loan_you_need">How much loan you need?</Label>
+            <Label htmlFor="loan_you_need">How much loan you need?<span className='text-red-500'>*</span></Label>
             <Select
               onValueChange={(value) =>
                 handleFieldChange("loan_you_need", value)
@@ -179,7 +181,7 @@ const VehicleDetails = ({ formData, setFormData, errors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="profession">Select Profession type</Label>
+            <Label htmlFor="profession">Select Profession type<span className='text-red-500'>*</span></Label>
             <Select
               onValueChange={(value) => handleFieldChange("profession", value)}
               value={formData.profession || ""}

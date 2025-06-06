@@ -21,6 +21,16 @@ const Documents = ({ formData, setFormData, errors }) => {
                 <h3 className="text-xl font-medium tracking-tight mb-4">Personal Documents</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
+                        <Label htmlFor="photo">Upload Photo</Label>
+                        <Input
+                            type="file"
+                            id="photo"
+                            onChange={handleFileChange}
+                            className={cn(errors.photo && "border-red-500 focus-visible:ring-red-500")}
+                        />
+                        {errors.photo && <p className="text-red-500 text-xs mt-1">{errors.photo}</p>}
+                    </div>
+                    <div className="space-y-2">
                         <Label htmlFor="aadhar_front">Upload aadhar front image</Label>
                         <Input
                             type="file"
