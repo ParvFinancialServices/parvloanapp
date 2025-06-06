@@ -24,6 +24,7 @@ import { renderDialogField } from "@/components/common/render_dialog_field";
 import { upload_doc } from "@/lib/actions/file"; // Keep if file uploads are needed
 import { setLoanData } from "@/lib/actions/loan";
 import { useUserState } from "../../store";
+import { cn, get_upload_promises } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import Documents from "./documents";
 
@@ -337,34 +338,11 @@ const App = () => {
 
     const dataToSubmit = { ...formData };
 
-    // Handle file uploads if any are added later
-    const uploadPromises = fileFields.map(async (fieldName) => {
-      const file = formData[fieldName];
-      if (file instanceof File) {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = async (result) => {
-            try {
-              const uploadedUrl = await upload_doc({
-                file: result.target.result,
-                folder: "Rishab", // Assuming a folder for uploads
-              });
-              dataToSubmit[fieldName] = uploadedUrl.secure_url;
-              resolve();
-            } catch (error) {
-              console.error(`Error uploading ${fieldName}:`, error);
-              reject(error);
-            }
-          };
-          reader.onerror = (error) => {
-            console.error(`FileReader error for ${fieldName}:`, error);
-            reject(error);
-          };
-          reader.readAsDataURL(file);
-        });
-      }
-      return Promise.resolve();
-    });
+    const uploadPromises = get_upload_promises(
+      fileFields,
+      formData,
+      dataToSubmit
+    );
 
     try {
       await Promise.all(uploadPromises);

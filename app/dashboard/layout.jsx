@@ -88,7 +88,8 @@ const Layout = ({ children }) => {
               </Breadcrumb> */}
             </div>
           </header>
-          {children}
+
+          {isLoading ? "loading..." : children}
         </SidebarInset>
       </SidebarProvider>
     </div>

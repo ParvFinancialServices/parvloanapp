@@ -201,7 +201,11 @@ function Page() {
       "other_doc",
     ];
 
-    const uploadPromises = get_upload_promises(fileFields);
+    const uploadPromises = get_upload_promises(
+      fileFields,
+      formData,
+      dataToSubmit
+    );
 
     try {
       await Promise.all(uploadPromises); // Wait for all uploads to complete
