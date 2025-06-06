@@ -20,7 +20,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                 <h3 className="text-xl font-medium tracking-tight mb-4">Saving account</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                        <Label htmlFor="saving_account_bank_name">Bank name in which your saving account.</Label>
+                        <Label htmlFor="saving_account_bank_name">Bank name in which your saving account.<span className='text-red-500'>*</span></Label>
                         <Input
                             type="text"
                             id="saving_account_bank_name"
@@ -52,9 +52,9 @@ const Employment = ({ formData, setFormData, errors }) => {
                 </div>
             </div>
 
-            {/* Current Loans Section */}
+            {/* Loan History Section */}
             <div className="mb-8 pb-6">
-                <h3 className="text-xl font-medium tracking-tight mb-4">Current Loans</h3>
+                <h3 className="text-xl font-medium tracking-tight mb-4">Loan History</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                         <Label htmlFor="total_loan_amount">Total loan amount</Label>

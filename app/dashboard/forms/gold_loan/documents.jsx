@@ -17,7 +17,7 @@ const Documents = ({ formData, setFormData, errors }) => {
 
             {/* Personal Documents Section */}
             <div className="mb-8 pb-6">
-                <h3 className="text-xl font-medium tracking-tight mb-4">Personal Documents</h3>
+                <h3 className="text-xl font-medium tracking-tight mb-4">Personal Documents<span className='text-red-500'>*</span></h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                         <Label htmlFor="aadhar_front">Upload aadhar front image</Label>
@@ -30,7 +30,7 @@ const Documents = ({ formData, setFormData, errors }) => {
                         {errors.aadhar_front && <p className="text-red-500 text-xs mt-1">{errors.aadhar_front}</p>}
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="aadhar_back">Upload aadhar back image</Label>
+                        <Label htmlFor="aadhar_back">Upload aadhar back image<span className='text-red-500'>*</span></Label>
                         <Input
                             type="file"
                             id="aadhar_back"
@@ -40,7 +40,7 @@ const Documents = ({ formData, setFormData, errors }) => {
                         {errors.aadhar_back && <p className="text-red-500 text-xs mt-1">{errors.aadhar_back}</p>}
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="personal_pan_upload">Upload Personal PAN image</Label>
+                        <Label htmlFor="personal_pan_upload">Upload Personal PAN image<span className='text-red-500'>*</span></Label>
                         <Input
                             type="file"
                             id="personal_pan_upload" // Corrected ID
@@ -50,7 +50,7 @@ const Documents = ({ formData, setFormData, errors }) => {
                         {errors.personal_pan_upload && <p className="text-red-500 text-xs mt-1">{errors.personal_pan_upload}</p>}
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="house_electricity">Present address proof (electricity bill)</Label>
+                        <Label htmlFor="house_electricity">Present address proof (electricity bill)<span className='text-red-500'>*</span></Label>
                         <Input
                             type="file"
                             id="house_electricity"

@@ -104,16 +104,16 @@ export const loanApplicationSchema = z
       .min(1, "Saving account turnover is required."),
 
     // Employment & Loans -> Current Loans
-    total_loan_amount: z.string().min(1, "Total loan amount is required."),
-    loan_start_date: z.string().min(1, "Loan start date is required."),
-    loan_provider_bank: z.string().min(1, "Loan provider bank is required."),
-    monthly_emi: z
-      .string()
-      .min(1, "Monthly EMI is required.")
-      .refine(
-        (val) => !isNaN(parseFloat(val)) && parseFloat(val) > 0,
-        "Monthly EMI must be a positive number."
-      ),
+    // total_loan_amount: z.string().min(1, "Total loan amount is required."),
+    // loan_start_date: z.string().min(1, "Loan start date is required."),
+    // loan_provider_bank: z.string().min(1, "Loan provider bank is required."),
+    // monthly_emi: z
+    //   .string()
+    //   .min(1, "Monthly EMI is required.")
+    //   .refine(
+    //     (val) => !isNaN(parseFloat(val)) && parseFloat(val) > 0,
+    //     "Monthly EMI must be a positive number."
+    //   ),
 
     // Documents -> Personal Documents
     aadhar_front: z
