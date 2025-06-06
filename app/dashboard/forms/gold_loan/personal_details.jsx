@@ -96,7 +96,6 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
                             id="id_of_connector"
                             value={formData.id_of_connector || ''}
                             onChange={(e) => handleFieldChange('id_of_connector', e.target.value)}
-                            disabled // As per config
                             className={cn(errors.id_of_connector && "border-red-500 focus-visible:ring-red-500")}
                         />
                         {errors.id_of_connector && <p className="text-red-500 text-xs mt-1">{errors.id_of_connector}</p>}
@@ -108,7 +107,6 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
                             id="name_of_connector"
                             value={formData.name_of_connector || ''}
                             onChange={(e) => handleFieldChange('name_of_connector', e.target.value)}
-                            disabled // As per config
                             className={cn(errors.name_of_connector && "border-red-500 focus-visible:ring-red-500")}
                         />
                         {errors.name_of_connector && <p className="text-red-500 text-xs mt-1">{errors.name_of_connector}</p>}
