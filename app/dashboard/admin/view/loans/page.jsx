@@ -1,17 +1,20 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { useUserState } from "../../store";
+import { useEffect, useState } from "react";
 import { getLoanData } from "@/lib/actions/loan";
+import { useUserState } from "@/app/dashboard/store";
+import LoanDataTable from "./loan_data_table";
+import { columns } from "./columns";
 
 const Page = () => {
   const userState = useUserState();
-
+  const [data, setData] = useState([]);
   useEffect(() => {
     console.log(userState);
     userState.user.getIdToken().then((token) => {
       console.log(token);
       getLoanData(token, "").then((res) => {
-        console.log(res);
+        console.log(JSON.parse(res.data));
+        setData(JSON.parse(res.data));
         // const result = extractTableData(res.data, "");
         // console.log(result);
         // let d = {
@@ -28,8 +31,11 @@ const Page = () => {
     });
   }, []);
 
-  return "hello";
+  return (
+    <div>
+      <LoanDataTable columns={columns} initialData={data} pageSize={10} />
+    </div>
+  );
 };
-
 
 export default Page;

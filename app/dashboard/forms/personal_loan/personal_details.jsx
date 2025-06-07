@@ -22,14 +22,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
     }));
   };
 
-  const handleSelectChange = (id, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      [id]: value,
-    }));
-  };
-
-  const handleRadioChange = (id, value) => {
+  const handleValueChange = (id, value) => {
     setFormData((prev) => ({
       ...prev,
       [id]: value,
@@ -63,7 +56,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
       delete prev.dob;
       return prev;
     });
-    handleChange("dob", dateValue);
+    handleValueChange("dob", dateValue);
   };
 
   return (
@@ -133,7 +126,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             <Label htmlFor="purpose_of_loan">Purpose of Loan</Label>
             <Select
               onValueChange={(value) =>
-                handleSelectChange("purpose_of_loan", value)
+                handleValueChange("purpose_of_loan", value)
               }
               value={formData.purpose_of_loan || ""}
             >
@@ -298,7 +291,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             <Label>Marital Status</Label>
             <RadioGroup
               onValueChange={(value) =>
-                handleRadioChange("marital_status", value)
+                handleValueChange("marital_status", value)
               }
               value={formData.marital_status || "Unmarried"}
               className={cn(
