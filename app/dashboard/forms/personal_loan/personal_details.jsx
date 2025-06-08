@@ -77,7 +77,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
           {" "}
           {/* Changed sm:grid-cols-2 to md:grid-cols-2 for consistency */}
           <div className="space-y-2">
-            <Label htmlFor="loan_amount">Loan Amount</Label>
+            <Label htmlFor="loan_amount">Loan Amount<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="loan_amount"
@@ -86,7 +86,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               placeholder="e.g., 500000"
               className={cn(
                 errors.loan_amount &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.loan_amount && (
@@ -94,7 +94,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="id_of_connector">ID of Connector</Label>
+            <Label htmlFor="id_of_connector">ID of Connector<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="id_of_connector"
@@ -102,7 +102,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               onChange={handleChange}
               className={cn(
                 errors.id_of_connector &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.id_of_connector && (
@@ -112,7 +112,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="name_of_connector">Name of Connector</Label>
+            <Label htmlFor="name_of_connector">Name of Connector<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="name_of_connector"
@@ -120,7 +120,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               onChange={handleChange}
               className={cn(
                 errors.name_of_connector &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.name_of_connector && (
@@ -130,7 +130,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="purpose_of_loan">Purpose of Loan</Label>
+            <Label htmlFor="purpose_of_loan">Purpose of Loan<span className='text-red-500'>*</span></Label>
             <Select
               onValueChange={(value) =>
                 handleSelectChange("purpose_of_loan", value)
@@ -142,7 +142,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
                 className={cn(
                   "w-full",
                   errors.purpose_of_loan &&
-                    "border-red-500 focus-visible:ring-red-500"
+                  "border-red-500 focus-visible:ring-red-500"
                 )}
               >
                 <SelectValue placeholder="Select purpose" />
@@ -187,7 +187,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
           {" "}
           {/* Changed sm:grid-cols-2 to md:grid-cols-2 for consistency */}
           <div className="space-y-2">
-            <Label htmlFor="Name">Name</Label>
+            <Label htmlFor="Name">Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="Name"
@@ -202,7 +202,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="fathers_name">Father's Name</Label>
+            <Label htmlFor="fathers_name">Father's Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="fathers_name"
@@ -210,7 +210,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               onChange={handleChange}
               className={cn(
                 errors.fathers_name &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.fathers_name && (
@@ -218,7 +218,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="mothers_name">Mother's Name</Label>
+            <Label htmlFor="mothers_name">Mother's Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="mothers_name"
@@ -226,7 +226,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               onChange={handleChange}
               className={cn(
                 errors.mothers_name &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.mothers_name && (
@@ -234,7 +234,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="phone_no">Phone Number</Label>
+            <Label htmlFor="phone_no">Phone Number<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="phone_no"
@@ -257,7 +257,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               onChange={handleChange}
               className={cn(
                 errors.alt_phone_no &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.alt_phone_no && (
@@ -265,7 +265,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="pan">PAN Number</Label>
+            <Label htmlFor="pan">PAN Number<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="pan"
@@ -280,7 +280,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="dob">Date of Birth</Label>
+            <Label htmlFor="dob">Date of Birth<span className='text-red-500'>*</span></Label>
             <Input
               type="date"
               id="dob"
@@ -295,7 +295,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label>Marital Status</Label>
+            <Label>Marital Status<span className='text-red-500'>*</span></Label>
             <RadioGroup
               onValueChange={(value) =>
                 handleRadioChange("marital_status", value)
@@ -334,7 +334,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
                   onChange={handleChange}
                   className={cn(
                     errors.spouse_name &&
-                      "border-red-500 focus-visible:ring-red-500"
+                    "border-red-500 focus-visible:ring-red-500"
                   )}
                 />
                 {errors.spouse_name && (
@@ -348,17 +348,100 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
         </div>
       </div>
 
+      {/* co-applicant information section */}
+      <div className="mb-8 pb-6 border-b border-gray-200">
+        <h3 className="text-xl font-medium tracking-tight mb-4">Co-applicant's Information</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label htmlFor="co_applicant_name">Co-applicant's Name</Label>
+            <Input
+              type="text"
+              id="co_applicant_name"
+              value={formData.applicant_name || ''}
+              onChange={(e) => handleFieldChange('co_applicant_name', e.target.value)}
+              className={cn(errors.co_applicant_name && "border-red-500 focus-visible:ring-red-500")}
+            />
+            {errors.co_applicant_name && <p className="text-red-500 text-xs mt-1">{errors.co_applicant_name}</p>}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="co_applicant_dob">Co-applicant's Date of Birth</Label>
+            <Input
+              type="date"
+              id="co_applicant_dob"
+              value={formData.co_applicant_dob || ''}
+              onChange={(e) => handleFieldChange('co_applicant_dob', e.target.value)}
+              className={cn(errors.co_applicant_dob && "border-red-500 focus-visible:ring-red-500")}
+            />
+            {errors.co_applicant_dob && <p className="text-red-500 text-xs mt-1">{errors.co_applicant_dob}</p>}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="co_occupation">Occupation</Label>
+            <Select
+              onValueChange={(value) => handleFieldChange("co_occupation", value)}
+              value={formData.co_occupation || ""}
+            >
+              <SelectTrigger
+                id="co_occupation"
+                className={cn(
+                  "w-full",
+                  errors.co_occupation &&
+                  "border-red-500 focus-visible:ring-red-500"
+                )}
+              >
+                <SelectValue placeholder="Select profession" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Job">Job</SelectItem>
+                <SelectItem value="Business">Business</SelectItem>
+                <SelectItem value="Others">Others</SelectItem>
+              </SelectContent>
+            </Select>
+            {errors.co_occupation && (
+              <p className="text-red-500 text-xs mt-1">{errors.co_occupation}</p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="relation_with_applicant">Relation with Applicant</Label>
+            <Select
+              onValueChange={(value) => handleFieldChange("relation_with_applicant", value)}
+              value={formData.relation_with_applicant || ""}
+            >
+              <SelectTrigger
+                id="relation_with_applicant"
+                className={cn(
+                  "w-full",
+                  errors.relation_with_applicant &&
+                  "border-red-500 focus-visible:ring-red-500"
+                )}
+              >
+                <SelectValue placeholder="Select profession" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Mother">Mother</SelectItem>
+                <SelectItem value="Father">Father</SelectItem>
+                <SelectItem value="Spouse">Spouse</SelectItem>
+                <SelectItem value="Brother">Brother</SelectItem>
+              </SelectContent>
+            </Select>
+            {errors.relation_with_applicant && (
+              <p className="text-red-500 text-xs mt-1">{errors.relation_with_applicant}</p>
+            )}
+          </div>
+        </div>
+      </div>
+
       {/* Permanent Address Section */}
       <div className="mb-8 pb-6 border-b border-gray-200">
         <h3 className="text-xl font-medium tracking-tight mb-4">
-          Permanent Address (Permanent address should be addressed as mentioned
-          on your aadhar card)
+          Permanent Address 
+          <span className="text-black/80 font-thin text-sm"> (Permanent address should be addressed as mentioned
+          on your aadhar card)</span>
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {" "}
           {/* Changed sm:grid-cols-2 to md:grid-cols-2 for consistency */}
           <div className="space-y-2">
-            <Label htmlFor="permanent_building_name">Building/House Name</Label>
+            <Label htmlFor="permanent_building_name">Building/House Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="permanent_building_name"
@@ -366,7 +449,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               onChange={handleChange}
               className={cn(
                 errors.permanent_building_name &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.permanent_building_name && (
@@ -376,7 +459,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="permanent_street_name">Street/Road Name</Label>
+            <Label htmlFor="permanent_street_name">Street/Road Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="permanent_street_name"
@@ -384,7 +467,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               onChange={handleChange}
               className={cn(
                 errors.permanent_street_name &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.permanent_street_name && (
@@ -402,7 +485,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               onChange={handleChange}
               className={cn(
                 errors.permanent_landmark &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.permanent_landmark && (
@@ -412,7 +495,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="permanent_city">City</Label>
+            <Label htmlFor="permanent_city">City<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="permanent_city"
@@ -420,7 +503,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               onChange={handleChange}
               className={cn(
                 errors.permanent_city &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.permanent_city && (
@@ -430,7 +513,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="permanent_district">District</Label>
+            <Label htmlFor="permanent_district">District<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="permanent_district"
@@ -438,7 +521,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               onChange={handleChange}
               className={cn(
                 errors.permanent_district &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.permanent_district && (
@@ -448,7 +531,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="permanent_state">State</Label>
+            <Label htmlFor="permanent_state">State<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="permanent_state"
@@ -456,7 +539,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               onChange={handleChange}
               className={cn(
                 errors.permanent_state &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.permanent_state && (
@@ -466,7 +549,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="permanent_pincode">Pincode</Label>
+            <Label htmlFor="permanent_pincode">Pincode<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="permanent_pincode"
@@ -474,7 +557,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               onChange={handleChange}
               className={cn(
                 errors.permanent_pincode &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.permanent_pincode && (
@@ -534,13 +617,16 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
       {/* Present Address Section */}
       <div className="mb-8 pb-6">
         <h3 className="text-xl font-medium tracking-tight mb-4">
-          Present Address (Fill the address where you are staying currently)
+          Present Address 
+          <span className="text-sm font-thin text-black/80">
+           (Fill the address where you are staying currently)
+          </span>
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {" "}
           {/* Changed sm:grid-cols-2 to md:grid-cols-2 for consistency */}
           <div className="space-y-2">
-            <Label htmlFor="present_building_name">Building/House Name</Label>
+            <Label htmlFor="present_building_name">Building/House Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="present_building_name"
@@ -549,7 +635,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               disabled={formData.same_as_permanent_address}
               className={cn(
                 errors.present_building_name &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.present_building_name && (
@@ -559,7 +645,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="present_street_name">Street/Road Name</Label>
+            <Label htmlFor="present_street_name">Street/Road Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="present_street_name"
@@ -568,7 +654,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               disabled={formData.same_as_permanent_address}
               className={cn(
                 errors.present_street_name &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.present_street_name && (
@@ -587,7 +673,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               disabled={formData.same_as_permanent_address}
               className={cn(
                 errors.present_landmark &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.present_landmark && (
@@ -597,7 +683,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="present_city">City</Label>
+            <Label htmlFor="present_city">City<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="present_city"
@@ -606,7 +692,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               disabled={formData.same_as_permanent_address}
               className={cn(
                 errors.present_city &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.present_city && (
@@ -614,7 +700,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="present_district">District</Label>
+            <Label htmlFor="present_district">District<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="present_district"
@@ -623,7 +709,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               disabled={formData.same_as_permanent_address}
               className={cn(
                 errors.present_district &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.present_district && (
@@ -633,7 +719,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="present_state">State</Label>
+            <Label htmlFor="present_state">State<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="present_state"
@@ -642,7 +728,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               disabled={formData.same_as_permanent_address}
               className={cn(
                 errors.present_state &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.present_state && (
@@ -652,7 +738,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="present_pincode">Pincode</Label>
+            <Label htmlFor="present_pincode">Pincode<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="present_pincode"
@@ -661,7 +747,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               disabled={formData.same_as_permanent_address}
               className={cn(
                 errors.present_pincode &&
-                  "border-red-500 focus-visible:ring-red-500"
+                "border-red-500 focus-visible:ring-red-500"
               )}
             />
             {errors.present_pincode && (

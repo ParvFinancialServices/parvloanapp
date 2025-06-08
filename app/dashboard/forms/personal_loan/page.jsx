@@ -70,6 +70,11 @@ function Page() {
     dob: "",
     marital_status: "Unmarried", // Default
     spouse_name: "", // Conditional
+    // co-applicant details
+    co_applicant_dob:"",
+    co_applicant_name:"",
+    co_occupation:"",
+    
     permanent_building_name: "",
     permanent_street_name: "",
     permanent_landmark: "",

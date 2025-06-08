@@ -64,6 +64,13 @@ const App = () => {
     // Checkbox for same address
     same_as_permanent_address: false,
 
+    profession:"Business",
+
+      // co-applicant details
+    co_applicant_dob:"",
+    co_applicant_name:"",
+    co_occupation:"",
+
     // Profession Details (Home Loan Specific)
     current_company_name: "", // Job Details
     salary_account_bank: "", // Job Details
@@ -104,7 +111,15 @@ const App = () => {
     shop_front: undefined,
     house_electricity: undefined,
     other_doc: undefined,
-    rashid: undefined, // New for Home Loan Property Documents
+    // rashid: undefined, // New for Home Loan Property Documents
+
+    sale_deed:"",
+    mutation:"",
+    rashid:"",
+    lpc:"",
+    property_pic:"",
+    property_map:"",
+    chain_deed:"",
   });
 
   const [errors, setErrors] = useState({});

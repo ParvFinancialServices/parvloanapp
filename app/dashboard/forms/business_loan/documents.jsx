@@ -21,7 +21,7 @@ const Documents = ({ formData, setFormData, errors }) => {
                 <h3 className="text-xl font-medium tracking-tight mb-4">Personal Documents</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                        <Label htmlFor="photo">Upload Photo</Label>
+                        <Label htmlFor="photo">Upload Photo<span className='text-red-500'>*</span></Label>
                         <Input
                             type="file"
                             id="photo"
@@ -31,7 +31,7 @@ const Documents = ({ formData, setFormData, errors }) => {
                         {errors.photo && <p className="text-red-500 text-xs mt-1">{errors.photo}</p>}
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="aadhar_front">Upload aadhar front image</Label>
+                        <Label htmlFor="aadhar_front">Upload aadhar front image<span className='text-red-500'>*</span></Label>
                         <Input
                             type="file"
                             id="aadhar_front"
@@ -41,7 +41,7 @@ const Documents = ({ formData, setFormData, errors }) => {
                         {errors.aadhar_front && <p className="text-red-500 text-xs mt-1">{errors.aadhar_front}</p>}
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="aadhar_back">Upload aadhar back image</Label>
+                        <Label htmlFor="aadhar_back">Upload aadhar back image<span className='text-red-500'>*</span></Label>
                         <Input
                             type="file"
                             id="aadhar_back"
@@ -51,7 +51,7 @@ const Documents = ({ formData, setFormData, errors }) => {
                         {errors.aadhar_back && <p className="text-red-500 text-xs mt-1">{errors.aadhar_back}</p>}
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="personal_pan_upload">Upload personal PAN image</Label>
+                        <Label htmlFor="personal_pan_upload">Upload personal PAN image<span className='text-red-500'>*</span></Label>
                         <Input
                             type="file"
                             id="personal_pan_upload"
@@ -68,7 +68,7 @@ const Documents = ({ formData, setFormData, errors }) => {
                 <h3 className="text-xl font-medium tracking-tight mb-4">Business Documents</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                        <Label htmlFor="company_image">Upload company / firm image?</Label>
+                        <Label htmlFor="company_image">Upload company / firm image?<span className='text-red-500'>*</span></Label>
                         <Input
                             type="file"
                             id="company_image"

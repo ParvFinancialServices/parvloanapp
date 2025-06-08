@@ -97,7 +97,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <Label htmlFor="loan_amount">Loan Amount</Label>
+            <Label htmlFor="loan_amount">Loan Amount<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="loan_amount"
@@ -113,7 +113,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="id_of_connector">ID of Connector</Label>
+            <Label htmlFor="id_of_connector">ID of Connector<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="id_of_connector"
@@ -133,7 +133,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="name_of_connector">Name of Connector</Label>
+            <Label htmlFor="name_of_connector">Name of Connector<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="name_of_connector"
@@ -153,7 +153,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="purpose_of_loan">Purpose of Loan</Label>
+            <Label htmlFor="purpose_of_loan">Purpose of Loan<span className='text-red-500'>*</span></Label>
             <Select
               onValueChange={(value) =>
                 handleFieldChange("purpose_of_loan", value)
@@ -195,7 +195,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <Label htmlFor="applicant_name">Name</Label>
+            <Label htmlFor="applicant_name">Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="applicant_name"
@@ -215,7 +215,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="fathers_name">Father's Name</Label>
+            <Label htmlFor="fathers_name">Father's Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="fathers_name"
@@ -233,7 +233,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="mothers_name">Mother's Name</Label>
+            <Label htmlFor="mothers_name">Mother's Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="mothers_name"
@@ -251,7 +251,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="phone_no">Phone Number</Label>
+            <Label htmlFor="phone_no">Phone Number<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="phone_no"
@@ -284,7 +284,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">Email<span className='text-red-500'>*</span></Label>
             <Input
               type="email"
               id="email"
@@ -299,7 +299,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="pan">PAN Number</Label>
+            <Label htmlFor="pan">PAN Number<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="pan"
@@ -314,7 +314,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="dob">Date of Birth</Label>
+            <Label htmlFor="dob">Date of Birth<span className='text-red-500'>*</span></Label>
             <Input
               type="date"
               id="dob"
@@ -329,7 +329,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label>Marital Status</Label>
+            <Label>Marital Status<span className='text-red-500'>*</span></Label>
             <RadioGroup
               onValueChange={(value) =>
                 handleFieldChange("marital_status", value)
@@ -387,12 +387,12 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
       {/* Permanent Address Section */}
       <div className="mb-8 pb-6 border-b border-gray-200">
         <h3 className="text-xl font-medium tracking-tight mb-4">
-          Permanent Address (Permanent address should be addressed as mentioned
-          on your aadhar card)
+          Permanent Address <span className="text-sm text-black/80 font-light">(Permanent address should be addressed as mentioned
+          on your aadhar card)</span>
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <Label htmlFor="permanent_building_name">Building/House Name</Label>
+            <Label htmlFor="permanent_building_name">Building/House Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="permanent_building_name"
@@ -412,7 +412,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="permanent_street_name">Street/Road Name</Label>
+            <Label htmlFor="permanent_street_name">Street/Road Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="permanent_street_name"
@@ -452,7 +452,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="permanent_city">City</Label>
+            <Label htmlFor="permanent_city">City<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="permanent_city"
@@ -472,7 +472,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="permanent_district">District</Label>
+            <Label htmlFor="permanent_district">District<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="permanent_district"
@@ -492,7 +492,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="permanent_state">State</Label>
+            <Label htmlFor="permanent_state">State<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="permanent_state"
@@ -512,7 +512,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="permanent_pincode">Pincode</Label>
+            <Label htmlFor="permanent_pincode">Pincode<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="permanent_pincode"
@@ -537,7 +537,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
       {/* Present Address Section */}
       <div className="mb-8 pb-6">
         <h3 className="text-xl font-medium tracking-tight mb-4">
-          Present Address (Fill the address where you are staying currently)
+          Present Address <span className="text-sm text-black/80 font-light">(Fill the address where you are staying currently)</span>
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2 col-span-full flex items-center">
@@ -553,10 +553,8 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             </Label>
           </div>
 
-          {/* {!formData.same_as_permanent_address && (
-                        <> */}
           <div className="space-y-2">
-            <Label htmlFor="present_building_name">Building/House Name</Label>
+            <Label htmlFor="present_building_name">Building/House Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="present_building_name"
@@ -576,7 +574,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="present_street_name">Street/Road Name</Label>
+            <Label htmlFor="present_street_name">Street/Road Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="present_street_name"
@@ -616,7 +614,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="present_city">City</Label>
+            <Label htmlFor="present_city">City<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="present_city"
@@ -634,7 +632,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="present_district">District</Label>
+            <Label htmlFor="present_district">District<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="present_district"
@@ -654,7 +652,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="present_state">State</Label>
+            <Label htmlFor="present_state">State<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="present_state"
@@ -674,7 +672,7 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="present_pincode">Pincode</Label>
+            <Label htmlFor="present_pincode">Pincode<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="present_pincode"
@@ -693,8 +691,6 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
               </p>
             )}
           </div>
-          {/* </>
-                    )} */}
         </div>
       </div>
     </div>

@@ -41,7 +41,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                         {formData.profession === "Business" && (
                             <>
                                 <div className="space-y-2">
-                                    <Label htmlFor="company_name">Company / firm Name</Label>
+                                    <Label htmlFor="company_name">Company / firm Name<span className='text-red-500'>*</span></Label>
                                     <Input
                                         type="text"
                                         id="company_name"
@@ -52,7 +52,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                                     {errors.company_name && <p className="text-red-500 text-xs mt-1">{errors.company_name}</p>}
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="company_age">How old your business?</Label>
+                                    <Label htmlFor="company_age">How old your business?<span className='text-red-500'>*</span></Label>
                                     <Select
                                         onValueChange={(value) => handleFieldChange('company_age', value)}
                                         value={formData.company_age || ''}
@@ -70,7 +70,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                                     {errors.company_age && <p className="text-red-500 text-xs mt-1">{errors.company_age}</p>}
                                 </div>
                                 <div className="space-y-2 col-span-full">
-                                    <Label>Select registration paper you have for your business?</Label>
+                                    <Label>Select registration paper you have for your business?<span className='text-red-500'>*</span></Label>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                         {[
                                             "GST registration",
@@ -99,7 +99,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                         {formData.profession === "Job" && (
                             <>
                                 <div className="space-y-2">
-                                    <Label htmlFor="current_company_name">Current Company Name</Label>
+                                    <Label htmlFor="current_company_name">Current Company Name<span className='text-red-500'>*</span></Label>
                                     <Input
                                         type="text"
                                         id="current_company_name"
@@ -110,7 +110,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                                     {errors.current_company_name && <p className="text-red-500 text-xs mt-1">{errors.current_company_name}</p>}
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="salary_account_bank">Salary Account Bank Name</Label>
+                                    <Label htmlFor="salary_account_bank">Salary Account Bank Name<span className='text-red-500'>*</span></Label>
                                     <Input
                                         type="text"
                                         id="salary_account_bank"
@@ -121,7 +121,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                                     {errors.salary_account_bank && <p className="text-red-500 text-xs mt-1">{errors.salary_account_bank}</p>}
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="savings_account_bank">Savings Account Bank Name</Label>
+                                    <Label htmlFor="savings_account_bank">Savings Account Bank Name<span className='text-red-500'>*</span></Label>
                                     <Input
                                         type="text"
                                         id="savings_account_bank"
@@ -132,7 +132,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                                     {errors.savings_account_bank && <p className="text-red-500 text-xs mt-1">{errors.savings_account_bank}</p>}
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="job_tenure">Job tenure in current company</Label>
+                                    <Label htmlFor="job_tenure">Job tenure in current company<span className='text-red-500'>*</span></Label>
                                     <Select
                                         onValueChange={(value) => handleFieldChange('job_tenure', value)}
                                         value={formData.job_tenure || ''}
@@ -150,7 +150,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                                     {errors.job_tenure && <p className="text-red-500 text-xs mt-1">{errors.job_tenure}</p>}
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="job_experience">Experience</Label>
+                                    <Label htmlFor="job_experience">Experience<span className='text-red-500'>*</span></Label>
                                     <Select
                                         onValueChange={(value) => handleFieldChange('job_experience', value)}
                                         value={formData.job_experience || ''}
@@ -169,7 +169,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                                     {errors.job_experience && <p className="text-red-500 text-xs mt-1">{errors.job_experience}</p>}
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="monthly_income">Your Monthly Income</Label>
+                                    <Label htmlFor="monthly_income">Your Monthly Income<span className='text-red-500'>*</span></Label>
                                     <Select
                                         onValueChange={(value) => handleFieldChange('monthly_income', value)}
                                         value={formData.monthly_income || ''}
@@ -297,7 +297,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                 <h3 className="text-xl font-medium tracking-tight mb-4">Saving account</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                        <Label htmlFor="saving_account_bank_name">Bank name in which your saving account.</Label>
+                        <Label htmlFor="saving_account_bank_name">Bank name in which your saving account.<span className='text-red-500'>*</span></Label>
                         <Input
                             type="text"
                             id="saving_account_bank_name"
@@ -308,7 +308,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                         {errors.saving_account_bank_name && <p className="text-red-500 text-xs mt-1">{errors.saving_account_bank_name}</p>}
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="saving_account_turnover">Turnover of your saving account</Label>
+                        <Label htmlFor="saving_account_turnover">Turnover of your saving account<span className='text-red-500'>*</span></Label>
                         <Select
                             onValueChange={(value) => handleFieldChange('saving_account_turnover', value)}
                             value={formData.saving_account_turnover || ''}
@@ -385,7 +385,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                 <h3 className="text-xl font-medium tracking-tight mb-4">Property Information</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2 col-span-full">
-                        <Label>Do you have any property which you can give for mortgage?</Label>
+                        <Label>Do you have any property which you can give for mortgage?<span className='text-red-500'>*</span></Label>
                         <RadioGroup
                             onValueChange={(value) => handleFieldChange('have_property_for_mortage', value)}
                             value={formData.have_property_for_mortage || 'No'}
@@ -447,7 +447,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                         )}
                     </div>
                     <div className="space-y-2 col-span-full">
-                        <Label>Do you have 17 khata agriculture land?</Label>
+                        <Label>Do you have 17 khata agriculture land?<span className='text-red-500'>*</span></Label>
                         <RadioGroup
                             onValueChange={(value) => handleFieldChange('have_17_kahta_agri_land', value)}
                             value={formData.have_17_kahta_agri_land || 'No'}
@@ -465,7 +465,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                         {errors.have_17_kahta_agri_land && <p className="text-red-500 text-xs mt-1">{errors.have_17_kahta_agri_land}</p>}
                     </div>
                     <div className="space-y-2 col-span-full">
-                        <Label>We need the following documents of property, select which are available?</Label>
+                        <Label>We need the following documents of property, select which are available?<span className='text-red-500'>*</span></Label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             {[
                                 "Khatiyan (In case of inherited property)",

@@ -36,14 +36,14 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
 
   return (
     <div className="flex flex-col p-4">
-     {/* Income Details Section */}
+      {/* Income Details Section */}
       <div className="mb-8 pb-6 border-b border-gray-200">
         <h3 className="text-xl font-medium tracking-tight mb-4">
           Income Details
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Changed sm:grid-cols-2 to md:grid-cols-2 for consistency with other components */}
           <div className="space-y-2">
-            <Label htmlFor="current_company_name">Current Company Name</Label>
+            <Label htmlFor="current_company_name">Current Company Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="current_company_name"
@@ -56,6 +56,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
           <div className="space-y-2">
             <Label htmlFor="salary_account_bank">
               Salary Account Bank Name
+              <span className='text-red-500'>*</span>
             </Label>
             <Input
               type="text"
@@ -69,6 +70,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
           <div className="space-y-2">
             <Label htmlFor="savings_account_bank">
               Savings Account Bank Name
+              <span className='text-red-500'>*</span>
             </Label>
             <Input
               type="text"
@@ -80,7 +82,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
             {errors.savings_account_bank && <p className="text-red-500 text-xs mt-1">{errors.savings_account_bank}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="job_tenure">Job tenure in current company</Label>
+            <Label htmlFor="job_tenure">Job tenure in current company<span className='text-red-500'>*</span></Label>
             <Select
               onValueChange={(value) => handleSelectChange("job_tenure", value)}
               value={formData.job_tenure || ""}
@@ -100,7 +102,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
             {errors.job_tenure && <p className="text-red-500 text-xs mt-1">{errors.job_tenure}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="job_experience">Experience</Label>
+            <Label htmlFor="job_experience">Experience<span className='text-red-500'>*</span></Label>
             <Select
               onValueChange={(value) =>
                 handleSelectChange("job_experience", value)
@@ -125,7 +127,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
             {errors.job_experience && <p className="text-red-500 text-xs mt-1">{errors.job_experience}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="monthly_income">Your Monthly Income</Label>
+            <Label htmlFor="monthly_income">Your Monthly Income<span className='text-red-500'>*</span></Label>
             <Select
               onValueChange={(value) =>
                 handleSelectChange("monthly_income", value)
@@ -159,7 +161,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <Label htmlFor="office_building_name">Building/House Name</Label>
+            <Label htmlFor="office_building_name">Building/House Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="office_building_name"
@@ -170,7 +172,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
             {errors.office_building_name && <p className="text-red-500 text-xs mt-1">{errors.office_building_name}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="office_street_name">Street/Road Name</Label>
+            <Label htmlFor="office_street_name">Street/Road Name<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="office_street_name"
@@ -192,7 +194,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
             {errors.office_landmark && <p className="text-red-500 text-xs mt-1">{errors.office_landmark}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="office_city">City</Label>
+            <Label htmlFor="office_city">City<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="office_city"
@@ -203,7 +205,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
             {errors.office_city && <p className="text-red-500 text-xs mt-1">{errors.office_city}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="office_district">District</Label>
+            <Label htmlFor="office_district">District<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="office_district"
@@ -214,7 +216,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
             {errors.office_district && <p className="text-red-500 text-xs mt-1">{errors.office_district}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="office_state">State</Label>
+            <Label htmlFor="office_state">State<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="office_state"
@@ -225,7 +227,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
             {errors.office_state && <p className="text-red-500 text-xs mt-1">{errors.office_state}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="office_pincode">Pincode</Label>
+            <Label htmlFor="office_pincode">Pincode<span className='text-red-500'>*</span></Label>
             <Input
               type="text"
               id="office_pincode"
@@ -245,7 +247,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Changed sm:grid-cols-2 to md:grid-cols-2 for consistency */}
           <div className="space-y-2">
-            <Label>Do you have job offer letter of current job?</Label>
+            <Label>Do you have job offer letter of current job?<span className='text-red-500'>*</span></Label>
             <RadioGroup
               onValueChange={(value) =>
                 handleRadioChange("have_offer_letter", value)
@@ -266,7 +268,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
 
             {formData.have_offer_letter && (
               <div className="space-y-2 mt-4">
-                <Label htmlFor="offer_letter">Upload your offer letter</Label>
+                <Label htmlFor="offer_letter">Upload your offer letter<span className='text-red-500'>*</span></Label>
                 <Input
                   type="file"
                   id="offer_letter"
@@ -278,7 +280,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
             )}
           </div>
           <div className="space-y-2">
-            <Label>Do you have form-16 or TAN number?</Label>
+            <Label>Do you have form-16 or TAN number?<span className='text-red-500'>*</span></Label>
             <RadioGroup
               onValueChange={(value) => handleRadioChange("have_tan_no", value)}
               value={String(formData.have_tan_no)}
@@ -297,7 +299,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
 
             {formData.have_tan_no && (
               <div className="space-y-2 mt-4">
-                <Label htmlFor="tan_no">Enter your TAN Number</Label>
+                <Label htmlFor="tan_no">Enter your TAN Number<span className='text-red-500'>*</span></Label>
                 <Input
                   type="text"
                   id="tan_no"
@@ -313,6 +315,7 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
             <Label>
               Can you provide bank statement of last 6 or 12 months in Net
               banking formate?
+              <span className='text-red-500'>*</span>
             </Label>
             <RadioGroup
               onValueChange={(value) =>
@@ -347,144 +350,136 @@ const Employment = ({ formData, setFormData, errors }) => { // Added errors prop
               </div>
             )}
           </div>
-          <div className="space-y-2">
-            <Label>Do you have any current loan?</Label>
-            <RadioGroup
-              onValueChange={(value) =>
-                handleRadioChange("has_current_loan", value)
-              }
-              value={String(formData.has_current_loan)}
-              className={cn("flex items-center space-x-4", errors.has_current_loan && "border border-red-500 p-2 rounded-md")}
-            >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="true" id="has_current_loan_yes" />
-                <Label htmlFor="has_current_loan_yes">Yes</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="false" id="has_current_loan_no" />
-                <Label htmlFor="has_current_loan_no">No</Label>
-              </div>
-            </RadioGroup>
-            {errors.has_current_loan && <p className="text-red-500 text-xs mt-1">{errors.has_current_loan}</p>}
 
-            {formData.has_current_loan && (
-              <div className="space-y-2 mt-4">
-                <Label htmlFor="existing_loans">
-                  Enter the number of your existing loans
-                </Label>
-                <Input
-                  type="text"
-                  id="existing_loans"
-                  value={formData.existing_loans || ""}
-                  onChange={handleChange}
-                  className={cn(errors.existing_loans && "border-red-500 focus-visible:ring-red-500")}
-                />
-                {errors.existing_loans && <p className="text-red-500 text-xs mt-1">{errors.existing_loans}</p>}
-              </div>
-            )}
-          </div>
+
         </div>
       </div>
 
       {/* Past Loans Section */}
-      <div className="mb-8 pb-6">
-        <h3 className="text-xl font-medium tracking-tight mb-4">Past Loans</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Changed sm:grid-cols-2 to md:grid-cols-2 for consistency */}
-          <div className="space-y-2">
-            <Label htmlFor="total_loan_amount">Total loan amount</Label>
-            <Select
-              onValueChange={(value) =>
-                handleSelectChange("total_loan_amount", value)
-              }
-              value={formData.total_loan_amount || ""}
-            >
-              <SelectTrigger id="total_loan_amount" className={cn("w-full", errors.total_loan_amount && "border-red-500 focus-visible:ring-red-500")}>
-                <SelectValue placeholder="Select amount" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="less than 50,000">
-                  less than 50,000
-                </SelectItem>
-                <SelectItem value="50,000 - 1 lakh">
-                  50,000 - 1 lakh
-                </SelectItem>
-                <SelectItem value="1 lakh - 3 lakh">1 lakh - 3 lakh</SelectItem>
-                <SelectItem value="3 lakh - 5 lakh">3 lakh - 5 lakh</SelectItem>
-                <SelectItem value="5 lakh - 10 lakh">
-                  5 lakh - 10 lakh
-                </SelectItem>
-                <SelectItem value="10 lakh - 20 lakh">
-                  10 lakh - 20 lakh
-                </SelectItem>
-                <SelectItem value="above 20 lakh">above 20 lakh</SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.total_loan_amount && <p className="text-red-500 text-xs mt-1">{errors.total_loan_amount}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="loan_start_date">When you took loan</Label>
-            <Select
-              onValueChange={(value) =>
-                handleSelectChange("loan_start_date", value)
-              }
-              value={formData.loan_start_date || ""}
-            >
-              <SelectTrigger id="loan_start_date" className={cn("w-full", errors.loan_start_date && "border-red-500 focus-visible:ring-red-500")}>
-                <SelectValue placeholder="Select date" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="0-12 months before">
-                  0-12 months before
-                </SelectItem>
-                <SelectItem value="12-24 months before">
-                  12-24 months before
-                </SelectItem>
-                <SelectItem value="24-36 months before">
-                  24-36 months before
-                </SelectItem>
-                <SelectItem value="36-48 months before">
-                  36-48 months before
-                </SelectItem>
-                <SelectItem value="48-60 months before">
-                  48-60 months before
-                </SelectItem>
-                <SelectItem value="more than 60 months">
-                  more than 60 months
-                </SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.loan_start_date && <p className="text-red-500 text-xs mt-1">{errors.loan_start_date}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="loan_provider_bank">
-              Name the bank which provides loan to you.
-            </Label>
-            <Input
-              type="text"
-              id="loan_provider_bank"
-              value={formData.loan_provider_bank || ""}
-              onChange={handleChange}
-              placeholder="Bank name which provides loan"
-              className={cn(errors.loan_provider_bank && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.loan_provider_bank && <p className="text-red-500 text-xs mt-1">{errors.loan_provider_bank}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="monthly_emi">
-              what is monthly EMI currently you are paying
-            </Label>
-            <Input
-              type="text"
-              id="monthly_emi"
-              value={formData.monthly_emi || ""}
-              onChange={handleChange}
-              placeholder="Monthly EMI"
-              className={cn(errors.monthly_emi && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.monthly_emi && <p className="text-red-500 text-xs mt-1">{errors.monthly_emi}</p>}
-          </div>
+
+      <div>
+        <div className="space-y-2">
+          <Label>Do you have any current loan?<span className='text-red-500'>*</span></Label>
+          <RadioGroup
+            onValueChange={(value) =>
+              handleRadioChange("has_current_loan", value)
+            }
+            value={String(formData.has_current_loan)}
+            className={cn("flex items-center space-x-4", errors.has_current_loan && "border border-red-500 p-2 rounded-md")}
+          >
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="true" id="has_current_loan_yes" />
+              <Label htmlFor="has_current_loan_yes">Yes</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="false" id="has_current_loan_no" />
+              <Label htmlFor="has_current_loan_no">No</Label>
+            </div>
+          </RadioGroup>
+          {errors.has_current_loan && <p className="text-red-500 text-xs mt-1">{errors.has_current_loan}</p>}
         </div>
+        {formData.has_current_loan && (
+          <div className="mb-8 pb-6">
+            <h3 className="text-xl font-medium tracking-tight mb-4">Loan history</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Changed sm:grid-cols-2 to md:grid-cols-2 for consistency */}
+              <div className="space-y-2">
+                <Label htmlFor="total_loan_amount">Total loan amount</Label>
+                <Select
+                  onValueChange={(value) =>
+                    handleSelectChange("total_loan_amount", value)
+                  }
+                  value={formData.total_loan_amount || ""}
+                >
+                  <SelectTrigger id="total_loan_amount" className={cn("w-full", errors.total_loan_amount && "border-red-500 focus-visible:ring-red-500")}>
+                    <SelectValue placeholder="Select amount" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="less than 50,000">
+                      less than 50,000
+                    </SelectItem>
+                    <SelectItem value="50,000 - 1 lakh">
+                      50,000 - 1 lakh
+                    </SelectItem>
+                    <SelectItem value="1 lakh - 3 lakh">1 lakh - 3 lakh</SelectItem>
+                    <SelectItem value="3 lakh - 5 lakh">3 lakh - 5 lakh</SelectItem>
+                    <SelectItem value="5 lakh - 10 lakh">
+                      5 lakh - 10 lakh
+                    </SelectItem>
+                    <SelectItem value="10 lakh - 20 lakh">
+                      10 lakh - 20 lakh
+                    </SelectItem>
+                    <SelectItem value="above 20 lakh">above 20 lakh</SelectItem>
+                  </SelectContent>
+                </Select>
+                {errors.total_loan_amount && <p className="text-red-500 text-xs mt-1">{errors.total_loan_amount}</p>}
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="loan_start_date">When you took loan</Label>
+                <Select
+                  onValueChange={(value) =>
+                    handleSelectChange("loan_start_date", value)
+                  }
+                  value={formData.loan_start_date || ""}
+                >
+                  <SelectTrigger id="loan_start_date" className={cn("w-full", errors.loan_start_date && "border-red-500 focus-visible:ring-red-500")}>
+                    <SelectValue placeholder="Select date" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="0-12 months before">
+                      0-12 months before
+                    </SelectItem>
+                    <SelectItem value="12-24 months before">
+                      12-24 months before
+                    </SelectItem>
+                    <SelectItem value="24-36 months before">
+                      24-36 months before
+                    </SelectItem>
+                    <SelectItem value="36-48 months before">
+                      36-48 months before
+                    </SelectItem>
+                    <SelectItem value="48-60 months before">
+                      48-60 months before
+                    </SelectItem>
+                    <SelectItem value="more than 60 months">
+                      more than 60 months
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                {errors.loan_start_date && <p className="text-red-500 text-xs mt-1">{errors.loan_start_date}</p>}
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="loan_provider_bank">
+                  Name the bank which provides loan to you.
+                </Label>
+                <Input
+                  type="text"
+                  id="loan_provider_bank"
+                  value={formData.loan_provider_bank || ""}
+                  onChange={handleChange}
+                  placeholder="Bank name which provides loan"
+                  className={cn(errors.loan_provider_bank && "border-red-500 focus-visible:ring-red-500")}
+                />
+                {errors.loan_provider_bank && <p className="text-red-500 text-xs mt-1">{errors.loan_provider_bank}</p>}
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="monthly_emi">
+                  what is monthly EMI currently you are paying
+                </Label>
+                <Input
+                  type="text"
+                  id="monthly_emi"
+                  value={formData.monthly_emi || ""}
+                  onChange={handleChange}
+                  placeholder="Monthly EMI"
+                  className={cn(errors.monthly_emi && "border-red-500 focus-visible:ring-red-500")}
+                />
+                {errors.monthly_emi && <p className="text-red-500 text-xs mt-1">{errors.monthly_emi}</p>}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
+
     </div>
   );
 };

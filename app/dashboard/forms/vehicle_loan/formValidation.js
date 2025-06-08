@@ -98,8 +98,10 @@ export const loanApplicationSchema = z
     present_pincode: z.string().optional(),
 
     // Employment & Loans -> Income Details (Business)
-    company_name: z.string().optional(), // Conditional
-    company_age: z.string().optional(), // Conditional
+    company_name: z.string()
+      .min(1, "Company name is required."), // Conditional
+    company_age: z.string()
+      .min(1, "Company age is required."), // Conditional
     registration_paper: z.array(z.string()).optional(), // Conditional (multi-select)
 
     // Employment & Loans -> Income Details (Job)
@@ -128,30 +130,30 @@ export const loanApplicationSchema = z
       .min(1, "Saving account turnover is required."),
 
     // Employment & Loans -> Previous Loan History
-    loan_provider_bank: z
-      .string()
-      .min(1, "Previous loan provider bank is required."),
-    total_loan_amount_prev: z
-      .string()
-      .min(1, "Total previous loan amount is required.")
-      .refine(
-        (val) => !isNaN(parseFloat(val)) && parseFloat(val) >= 0,
-        "Total previous loan amount must be a non-negative number."
-      ),
-    current_emi: z
-      .string()
-      .min(1, "Current EMI is required.")
-      .refine(
-        (val) => !isNaN(parseFloat(val)) && parseFloat(val) >= 0,
-        "Current EMI must be a non-negative number."
-      ),
-    remaining_amount: z
-      .string()
-      .min(1, "Remaining amount is required.")
-      .refine(
-        (val) => !isNaN(parseFloat(val)) && parseFloat(val) >= 0,
-        "Remaining amount must be a non-negative number."
-      ),
+    // loan_provider_bank: z
+    //   .string()
+    //   .min(1, "Previous loan provider bank is required."),
+    // total_loan_amount_prev: z
+    //   .string()
+    //   .min(1, "Total previous loan amount is required.")
+    //   .refine(
+    //     (val) => !isNaN(parseFloat(val)) && parseFloat(val) >= 0,
+    //     "Total previous loan amount must be a non-negative number."
+    //   ),
+    // current_emi: z
+    //   .string()
+    //   .min(1, "Current EMI is required.")
+    //   .refine(
+    //     (val) => !isNaN(parseFloat(val)) && parseFloat(val) >= 0,
+    //     "Current EMI must be a non-negative number."
+    //   ),
+    // remaining_amount: z
+    //   .string()
+    //   .min(1, "Remaining amount is required.")
+    //   .refine(
+    //     (val) => !isNaN(parseFloat(val)) && parseFloat(val) >= 0,
+    //     "Remaining amount must be a non-negative number."
+    //   ),
 
     // Employment & Loans -> Property Information
     have_property_for_mortage: z
