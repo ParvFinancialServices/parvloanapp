@@ -37,279 +37,324 @@ const Profession = ({ formData, setFormData, errors }) => {
   };
 
   return (
-    <div className="flex flex-col p-4">
+    <div className="flex  flex-col p-4">
+      <div className="space-y-2 mb-8 pb-6">
+        {/* <Label>Profession<span className='text-red-500'>*</span></Label>
+         */}
+          <h3 className="text-xl font-medium tracking-tight mb-4">
+            Your Profession
+          </h3>
+        <RadioGroup
+          onValueChange={(value) =>
+            handleFieldChange("profession", value)
+          }
+          value={formData.profession || "Business"}
+          className={cn(
+            "flex items-center space-x-4",
+            errors.profession && "border border-red-500 p-2 rounded-md"
+          )}
+        >
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="Business" id="Business" />
+            <Label htmlFor="Business">Business</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem
+              value="Job"
+              id="Job"
+            />
+            <Label htmlFor="Job">Job </Label>
+          </div>
+        </RadioGroup>
+        {errors.profession && (
+          <p className="text-red-500 text-xs mt-1">
+            {errors.profession}
+          </p>
+        )}
+      </div>
       {/* Job Details Section */}
-      <div className="mb-8 pb-6 border-b border-gray-200">
-        <h3 className="text-xl font-medium tracking-tight mb-4">
-          Job Details (If you have job)
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <Label htmlFor="current_company_name">Current Company Name</Label>
-            <Input
-              type="text"
-              id="current_company_name"
-              value={formData.current_company_name || ""}
-              onChange={(e) =>
-                handleFieldChange("current_company_name", e.target.value)
-              }
-              className={cn(
-                errors.current_company_name &&
-                  "border-red-500 focus-visible:ring-red-500"
-              )}
-            />
-            {errors.current_company_name && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.current_company_name}
-              </p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="salary_account_bank">
-              Salary Account Bank Name
-            </Label>
-            <Input
-              type="text"
-              id="salary_account_bank"
-              value={formData.salary_account_bank || ""}
-              onChange={(e) =>
-                handleFieldChange("salary_account_bank", e.target.value)
-              }
-              className={cn(
-                errors.salary_account_bank &&
-                  "border-red-500 focus-visible:ring-red-500"
-              )}
-            />
-            {errors.salary_account_bank && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.salary_account_bank}
-              </p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="savings_account_bank">
-              Savings Account Bank Name
-            </Label>
-            <Input
-              type="text"
-              id="savings_account_bank"
-              value={formData.savings_account_bank || ""}
-              onChange={(e) =>
-                handleFieldChange("savings_account_bank", e.target.value)
-              }
-              className={cn(
-                errors.savings_account_bank &&
-                  "border-red-500 focus-visible:ring-red-500"
-              )}
-            />
-            {errors.savings_account_bank && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.savings_account_bank}
-              </p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="job_tenure">Job tenure in current company</Label>
-            <Select
-              onValueChange={(value) => handleFieldChange("job_tenure", value)}
-              value={formData.job_tenure || ""}
-            >
-              <SelectTrigger
-                id="job_tenure"
+      {
+        formData?.profession === 'Job' &&
+        <div className="mb-8 pb-6 border-b border-gray-200">
+          <h3 className="text-xl font-medium tracking-tight mb-4">
+            Job Details (If you have job)
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <Label htmlFor="current_company_name">Current Company Name<span className='text-red-500'>*</span></Label>
+              <Input
+                type="text"
+                id="current_company_name"
+                value={formData.current_company_name || ""}
+                onChange={(e) =>
+                  handleFieldChange("current_company_name", e.target.value)
+                }
                 className={cn(
-                  "w-full",
-                  errors.job_tenure &&
-                    "border-red-500 focus-visible:ring-red-500"
+                  errors.current_company_name &&
+                  "border-red-500 focus-visible:ring-red-500"
                 )}
-              >
-                <SelectValue placeholder="Select tenure" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="0-12 months">0-12 months</SelectItem>
-                <SelectItem value="12-24 months">12-24 months</SelectItem>
-                <SelectItem value="24-60 months">24-60 months</SelectItem>
-                <SelectItem value="more than 60 months">
-                  more than 60 months
-                </SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.job_tenure && (
-              <p className="text-red-500 text-xs mt-1">{errors.job_tenure}</p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="job_experience">Experience</Label>
-            <Select
-              onValueChange={(value) =>
-                handleFieldChange("job_experience", value)
-              }
-              value={formData.job_experience || ""}
-            >
-              <SelectTrigger
-                id="job_experience"
+              />
+              {errors.current_company_name && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.current_company_name}
+                </p>
+              )}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="salary_account_bank">
+                Salary Account Bank Name
+                <span className='text-red-500'>*</span>
+              </Label>
+              <Input
+                type="text"
+                id="salary_account_bank"
+                value={formData.salary_account_bank || ""}
+                onChange={(e) =>
+                  handleFieldChange("salary_account_bank", e.target.value)
+                }
                 className={cn(
-                  "w-full",
-                  errors.job_experience &&
-                    "border-red-500 focus-visible:ring-red-500"
+                  errors.salary_account_bank &&
+                  "border-red-500 focus-visible:ring-red-500"
                 )}
-              >
-                <SelectValue placeholder="Select experience" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="less than 1 year">
-                  less than 1 year
-                </SelectItem>
-                <SelectItem value="1-2 years">1-2 years</SelectItem>
-                <SelectItem value="2-3 years">2-3 years</SelectItem>
-                <SelectItem value="3-5 years">3-5 years</SelectItem>
-                <SelectItem value="more than 5 years">
-                  more than 5 years
-                </SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.job_experience && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.job_experience}
-              </p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="monthly_income">Your Monthly Income</Label>
-            <Select
-              onValueChange={(value) =>
-                handleFieldChange("monthly_income", value)
-              }
-              value={formData.monthly_income || ""}
-            >
-              <SelectTrigger
-                id="monthly_income"
+              />
+              {errors.salary_account_bank && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.salary_account_bank}
+                </p>
+              )}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="savings_account_bank">
+                Savings Account Bank Name
+                <span className='text-red-500'>*</span>
+              </Label>
+              <Input
+                type="text"
+                id="savings_account_bank"
+                value={formData.savings_account_bank || ""}
+                onChange={(e) =>
+                  handleFieldChange("savings_account_bank", e.target.value)
+                }
                 className={cn(
-                  "w-full",
-                  errors.monthly_income &&
-                    "border-red-500 focus-visible:ring-red-500"
+                  errors.savings_account_bank &&
+                  "border-red-500 focus-visible:ring-red-500"
                 )}
+              />
+              {errors.savings_account_bank && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.savings_account_bank}
+                </p>
+              )}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="job_tenure">Job tenure in current company<span className='text-red-500'>*</span></Label>
+              <Select
+                onValueChange={(value) => handleFieldChange("job_tenure", value)}
+                value={formData.job_tenure || ""}
               >
-                <SelectValue placeholder="Select income" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="less than 12,000">
-                  less than 12,000
-                </SelectItem>
-                <SelectItem value="15,000 - 20,000">15,000 - 20,000</SelectItem>
-                <SelectItem value="20,000 - 25,000">20,000 - 25,000</SelectItem>
-                <SelectItem value="25,000 - 30,000">25,000 - 30,000</SelectItem>
-                <SelectItem value="30,000 - 35,000">30,000 - 35,000</SelectItem>
-                <SelectItem value="35,000 - 45,000">35,000 - 45,000</SelectItem>
-                <SelectItem value="above 45,000">above 45,000</SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.monthly_income && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.monthly_income}
-              </p>
-            )}
+                <SelectTrigger
+                  id="job_tenure"
+                  className={cn(
+                    "w-full",
+                    errors.job_tenure &&
+                    "border-red-500 focus-visible:ring-red-500"
+                  )}
+                >
+                  <SelectValue placeholder="Select tenure" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="0-12 months">0-12 months</SelectItem>
+                  <SelectItem value="12-24 months">12-24 months</SelectItem>
+                  <SelectItem value="24-60 months">24-60 months</SelectItem>
+                  <SelectItem value="more than 60 months">
+                    more than 60 months
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+              {errors.job_tenure && (
+                <p className="text-red-500 text-xs mt-1">{errors.job_tenure}</p>
+              )}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="job_experience">Experience<span className='text-red-500'>*</span></Label>
+              <Select
+                onValueChange={(value) =>
+                  handleFieldChange("job_experience", value)
+                }
+                value={formData.job_experience || ""}
+              >
+                <SelectTrigger
+                  id="job_experience"
+                  className={cn(
+                    "w-full",
+                    errors.job_experience &&
+                    "border-red-500 focus-visible:ring-red-500"
+                  )}
+                >
+                  <SelectValue placeholder="Select experience" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="less than 1 year">
+                    less than 1 year
+                  </SelectItem>
+                  <SelectItem value="1-2 years">1-2 years</SelectItem>
+                  <SelectItem value="2-3 years">2-3 years</SelectItem>
+                  <SelectItem value="3-5 years">3-5 years</SelectItem>
+                  <SelectItem value="more than 5 years">
+                    more than 5 years
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+              {errors.job_experience && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.job_experience}
+                </p>
+              )}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="monthly_income">Your Monthly Income<span className='text-red-500'>*</span></Label>
+              <Select
+                onValueChange={(value) =>
+                  handleFieldChange("monthly_income", value)
+                }
+                value={formData.monthly_income || ""}
+              >
+                <SelectTrigger
+                  id="monthly_income"
+                  className={cn(
+                    "w-full",
+                    errors.monthly_income &&
+                    "border-red-500 focus-visible:ring-red-500"
+                  )}
+                >
+                  <SelectValue placeholder="Select income" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="less than 12,000">
+                    less than 12,000
+                  </SelectItem>
+                  <SelectItem value="15,000 - 20,000">15,000 - 20,000</SelectItem>
+                  <SelectItem value="20,000 - 25,000">20,000 - 25,000</SelectItem>
+                  <SelectItem value="25,000 - 30,000">25,000 - 30,000</SelectItem>
+                  <SelectItem value="30,000 - 35,000">30,000 - 35,000</SelectItem>
+                  <SelectItem value="35,000 - 45,000">35,000 - 45,000</SelectItem>
+                  <SelectItem value="above 45,000">above 45,000</SelectItem>
+                </SelectContent>
+              </Select>
+              {errors.monthly_income && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.monthly_income}
+                </p>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      }
+
 
       {/* Business Details Section */}
-      <div className="mb-8 pb-6 border-b border-gray-200">
-        <h3 className="text-xl font-medium tracking-tight mb-4">
-          Business Details (if you have Business)
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <Label htmlFor="company_name">Company / firm Name</Label>
-            <Input
-              type="text"
-              id="company_name"
-              value={formData.company_name || ""}
-              onChange={(e) =>
-                handleFieldChange("company_name", e.target.value)
-              }
-              className={cn(
-                errors.company_name &&
-                  "border-red-500 focus-visible:ring-red-500"
-              )}
-            />
-            {errors.company_name && (
-              <p className="text-red-500 text-xs mt-1">{errors.company_name}</p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="company_age">How old your business?</Label>
-            <Select
-              onValueChange={(value) => handleFieldChange("company_age", value)}
-              value={formData.company_age || ""}
-            >
-              <SelectTrigger
-                id="company_age"
+
+      {
+        formData?.profession === 'Business'
+        && <div className="mb-8 pb-6 border-b border-gray-200">
+          <h3 className="text-xl font-medium tracking-tight mb-4">
+            Business Details (if you have Business)
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <Label htmlFor="company_name">Company / firm Name<span className='text-red-500'>*</span></Label>
+              <Input
+                type="text"
+                id="company_name"
+                value={formData.company_name || ""}
+                onChange={(e) =>
+                  handleFieldChange("company_name", e.target.value)
+                }
                 className={cn(
-                  "w-full",
-                  errors.company_age &&
-                    "border-red-500 focus-visible:ring-red-500"
+                  errors.company_name &&
+                  "border-red-500 focus-visible:ring-red-500"
                 )}
-              >
-                <SelectValue placeholder="Select age" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="0-1 years">0-1 years</SelectItem>
-                <SelectItem value="1-3 years">1-3 years</SelectItem>
-                <SelectItem value="3-5 years">3-5 years</SelectItem>
-                <SelectItem value="more than 5 years">
-                  more than 5 years
-                </SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.company_age && (
-              <p className="text-red-500 text-xs mt-1">{errors.company_age}</p>
-            )}
-          </div>
-          <div className="space-y-2 col-span-full">
-            <Label>Select registration paper you have for your business?</Label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {[
-                "GST registration",
-                "UDYOG AAdhar registration",
-                "Form-3 or trade licence",
-                "any other",
-                "I don't have any registartion",
-              ].map((optionLabel) => (
-                <div key={optionLabel} className="flex items-center space-x-2">
-                  <Checkbox
-                    id={`registration_paper_${optionLabel
-                      .replace(/\s+/g, "_")
-                      .replace(/[\(\)]/g, "")}`}
-                    checked={
-                      formData.registration_paper?.includes(optionLabel) ||
-                      false
-                    }
-                    onCheckedChange={(checked) =>
-                      handleMultiOptionChange(
-                        "registration_paper",
-                        optionLabel,
-                        checked
-                      )
-                    }
-                  />
-                  <Label
-                    htmlFor={`registration_paper_${optionLabel
-                      .replace(/\s+/g, "_")
-                      .replace(/[\(\)]/g, "")}`}
-                  >
-                    {optionLabel}
-                  </Label>
-                </div>
-              ))}
+              />
+              {errors.company_name && (
+                <p className="text-red-500 text-xs mt-1">{errors.company_name}</p>
+              )}
             </div>
-            {errors.registration_paper && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.registration_paper}
-              </p>
-            )}
+            <div className="space-y-2">
+              <Label htmlFor="company_age">How old your business?<span className='text-red-500'>*</span></Label>
+              <Select
+                onValueChange={(value) => handleFieldChange("company_age", value)}
+                value={formData.company_age || ""}
+              >
+                <SelectTrigger
+                  id="company_age"
+                  className={cn(
+                    "w-full",
+                    errors.company_age &&
+                    "border-red-500 focus-visible:ring-red-500"
+                  )}
+                >
+                  <SelectValue placeholder="Select age" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="0-1 years">0-1 years</SelectItem>
+                  <SelectItem value="1-3 years">1-3 years</SelectItem>
+                  <SelectItem value="3-5 years">3-5 years</SelectItem>
+                  <SelectItem value="more than 5 years">
+                    more than 5 years
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+              {errors.company_age && (
+                <p className="text-red-500 text-xs mt-1">{errors.company_age}</p>
+              )}
+            </div>
+            <div className="space-y-2 col-span-full">
+              <Label>Select registration paper you have for your business?<span className='text-red-500'>*</span></Label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {[
+                  "GST registration",
+                  "UDYOG AAdhar registration",
+                  "Form-3 or trade licence",
+                  "any other",
+                  "I don't have any registartion",
+                ].map((optionLabel) => (
+                  <div key={optionLabel} className="flex items-center space-x-2">
+                    <Checkbox
+                      id={`registration_paper_${optionLabel
+                        .replace(/\s+/g, "_")
+                        .replace(/[\(\)]/g, "")}`}
+                      checked={
+                        formData.registration_paper?.includes(optionLabel) ||
+                        false
+                      }
+                      onCheckedChange={(checked) =>
+                        handleMultiOptionChange(
+                          "registration_paper",
+                          optionLabel,
+                          checked
+                        )
+                      }
+                    />
+                    <Label
+                      htmlFor={`registration_paper_${optionLabel
+                        .replace(/\s+/g, "_")
+                        .replace(/[\(\)]/g, "")}`}
+                    >
+                      {optionLabel}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+              {errors.registration_paper && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.registration_paper}
+                </p>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      }
+
 
       {/* Documents related query Section (Binary Questions) */}
       <div className="mb-8 pb-6 border-b border-gray-200">
@@ -318,7 +363,7 @@ const Profession = ({ formData, setFormData, errors }) => {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2 col-span-full">
-            <Label>Do you have job offer letter of current job?</Label>
+            <Label>Do you have job offer letter of current job?<span className='text-red-500'>*</span></Label>
             <RadioGroup
               onValueChange={(value) =>
                 handleFieldChange("have_offer_letter", value)
@@ -327,7 +372,7 @@ const Profession = ({ formData, setFormData, errors }) => {
               className={cn(
                 "flex items-center space-x-4",
                 errors.have_offer_letter &&
-                  "border border-red-500 p-2 rounded-md"
+                "border border-red-500 p-2 rounded-md"
               )}
             >
               <div className="flex items-center space-x-2">
@@ -347,7 +392,7 @@ const Profession = ({ formData, setFormData, errors }) => {
           </div>
 
           <div className="space-y-2 col-span-full">
-            <Label>Do you have form-16 or TAN number?</Label>
+            <Label>Do you have form-16 or TAN number?<span className='text-red-500'>*</span></Label>
             <RadioGroup
               onValueChange={(value) => handleFieldChange("have_tan_no", value)}
               value={formData.have_tan_no || "No"}
@@ -371,7 +416,7 @@ const Profession = ({ formData, setFormData, errors }) => {
           </div>
 
           <div className="space-y-2 col-span-full">
-            <Label>Do you have salary slip of last 3 months?</Label>
+            <Label>Do you have salary slip of last 3 months?<span className='text-red-500'>*</span></Label>
             <RadioGroup
               onValueChange={(value) =>
                 handleFieldChange("has_salary_slip", value)
@@ -402,6 +447,7 @@ const Profession = ({ formData, setFormData, errors }) => {
             <Label>
               Can you provide bank statement of last 6 or 12 months in Net
               banking formate?
+              <span className='text-red-500'>*</span>
             </Label>
             <RadioGroup
               onValueChange={(value) =>
@@ -411,7 +457,7 @@ const Profession = ({ formData, setFormData, errors }) => {
               className={cn(
                 "flex items-center space-x-4",
                 errors.has_bank_statement &&
-                  "border border-red-500 p-2 rounded-md"
+                "border border-red-500 p-2 rounded-md"
               )}
             >
               <div className="flex items-center space-x-2">
@@ -431,7 +477,7 @@ const Profession = ({ formData, setFormData, errors }) => {
           </div>
 
           <div className="space-y-2 col-span-full">
-            <Label>Do you have any current loan?</Label>
+            <Label>Do you have any current loan?<span className='text-red-500'>*</span></Label>
             <RadioGroup
               onValueChange={(value) =>
                 handleFieldChange("has_current_loan", value)
@@ -440,7 +486,7 @@ const Profession = ({ formData, setFormData, errors }) => {
               className={cn(
                 "flex items-center space-x-4",
                 errors.has_current_loan &&
-                  "border border-red-500 p-2 rounded-md"
+                "border border-red-500 p-2 rounded-md"
               )}
             >
               <div className="flex items-center space-x-2">
@@ -481,7 +527,7 @@ const Profession = ({ formData, setFormData, errors }) => {
                   className={cn(
                     "w-full",
                     errors.total_loan_amount &&
-                      "border-red-500 focus-visible:ring-red-500"
+                    "border-red-500 focus-visible:ring-red-500"
                   )}
                 >
                   <SelectValue placeholder="Select amount" />
@@ -527,7 +573,7 @@ const Profession = ({ formData, setFormData, errors }) => {
                   className={cn(
                     "w-full",
                     errors.loan_start_date &&
-                      "border-red-500 focus-visible:ring-red-500"
+                    "border-red-500 focus-visible:ring-red-500"
                   )}
                 >
                   <SelectValue placeholder="Select date" />
@@ -573,7 +619,7 @@ const Profession = ({ formData, setFormData, errors }) => {
                 placeholder="Bank name which provides loan"
                 className={cn(
                   errors.loan_provider_bank &&
-                    "border-red-500 focus-visible:ring-red-500"
+                  "border-red-500 focus-visible:ring-red-500"
                 )}
               />
               {errors.loan_provider_bank && (
@@ -596,7 +642,7 @@ const Profession = ({ formData, setFormData, errors }) => {
                 placeholder="Monthly EMI"
                 className={cn(
                   errors.monthly_emi &&
-                    "border-red-500 focus-visible:ring-red-500"
+                  "border-red-500 focus-visible:ring-red-500"
                 )}
               />
               {errors.monthly_emi && (
@@ -627,7 +673,7 @@ const Profession = ({ formData, setFormData, errors }) => {
               className={cn(
                 "flex items-center space-x-4",
                 errors.have_property_for_mortage &&
-                  "border border-red-500 p-2 rounded-md"
+                "border border-red-500 p-2 rounded-md"
               )}
             >
               <div className="flex items-center space-x-2">
@@ -665,7 +711,7 @@ const Profession = ({ formData, setFormData, errors }) => {
                       className={cn(
                         "w-full",
                         errors.property_location &&
-                          "border-red-500 focus-visible:ring-red-500"
+                        "border-red-500 focus-visible:ring-red-500"
                       )}
                     >
                       <SelectValue placeholder="Select location" />
@@ -704,7 +750,7 @@ const Profession = ({ formData, setFormData, errors }) => {
                       className={cn(
                         "w-full",
                         errors.who_own_property &&
-                          "border-red-500 focus-visible:ring-red-500"
+                        "border-red-500 focus-visible:ring-red-500"
                       )}
                     >
                       <SelectValue placeholder="Select owner" />
@@ -738,7 +784,7 @@ const Profession = ({ formData, setFormData, errors }) => {
               className={cn(
                 "flex items-center space-x-4",
                 errors.have_17_kahta_agri_land &&
-                  "border border-red-500 p-2 rounded-md"
+                "border border-red-500 p-2 rounded-md"
               )}
             >
               <div className="flex items-center space-x-2">

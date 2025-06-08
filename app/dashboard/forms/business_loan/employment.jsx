@@ -45,7 +45,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                 <h3 className="text-xl font-medium tracking-tight mb-4">Business Income Details</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                        <Label htmlFor="company_name">Company / firm Name</Label>
+                        <Label htmlFor="company_name">Company / firm Name<span className='text-red-500'>*</span></Label>
                         <Input
                             type="text"
                             id="company_name"
@@ -56,7 +56,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                         {errors.company_name && <p className="text-red-500 text-xs mt-1">{errors.company_name}</p>}
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="company_age">How old your business?</Label>
+                        <Label htmlFor="company_age">How old your business?<span className='text-red-500'>*</span></Label>
                         <Select
                             onValueChange={(value) => handleFieldChange('company_age', value)}
                             value={formData.company_age || ''}
@@ -74,7 +74,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                         {errors.company_age && <p className="text-red-500 text-xs mt-1">{errors.company_age}</p>}
                     </div>
                     <div className="space-y-2 col-span-full">
-                        <Label>Select registration paper you have for your business?</Label>
+                        <Label>Select registration paper you have for your business?<span className='text-red-500'>*</span></Label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             {['GST registration', 'UDYOG AAdhar registration', 'Form-3 or trade licence', 'any other', "I don't have any registartion"].map(optionLabel => (
                                 <div key={optionLabel} className="flex items-center space-x-2">
@@ -192,7 +192,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                 <h3 className="text-xl font-medium tracking-tight mb-4">Saving account</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                        <Label htmlFor="saving_account_bank_name">Bank name in which your saving account.</Label>
+                        <Label htmlFor="saving_account_bank_name">Bank name in which your saving account.<span className='text-red-500'>*</span></Label>
                         <Input
                             type="text"
                             id="saving_account_bank_name"
@@ -203,7 +203,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                         {errors.saving_account_bank_name && <p className="text-red-500 text-xs mt-1">{errors.saving_account_bank_name}</p>}
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="saving_account_turnover">Turnover of your saving account</Label>
+                        <Label htmlFor="saving_account_turnover">Turnover of your saving account<span className='text-red-500'>*</span></Label>
                         <Select
                             onValueChange={(value) => handleFieldChange('saving_account_turnover', value)}
                             value={formData.saving_account_turnover || ''}
@@ -226,7 +226,7 @@ const Employment = ({ formData, setFormData, errors }) => {
 
             {/* Previous Loan History Section */}
             <div className="mb-8 pb-6 border-b border-gray-200">
-                <h3 className="text-xl font-medium tracking-tight mb-4">Previous Loan History (Please provide details of any past loans, if applicable.)</h3>
+                <h3 className="text-xl font-medium tracking-tight mb-4">Previous Loan History <span className='text-sm text-black/80 font-light'>(Please provide details of any past loans, if applicable.)</span></h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                         <Label htmlFor="loan_provider_bank">Bank name in which which provides you loan?.</Label>
@@ -280,7 +280,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                 <h3 className="text-xl font-medium tracking-tight mb-4">Documents related query</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2 col-span-full">
-                        <Label>Do you file income tax?</Label>
+                        <Label>Do you file income tax?<span className='text-red-500'>*</span></Label>
                         <RadioGroup
                             onValueChange={(value) => handleFieldChange('file_income_tax', value)}
                             value={formData.file_income_tax || 'No'}
@@ -323,7 +323,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                         )}
                     </div>
                     <div className="space-y-2 col-span-full">
-                        <Label>Anyone else files income tax in your family?</Label>
+                        <Label>Anyone else files income tax in your family?<span className='text-red-500'>*</span></Label>
                         <RadioGroup
                             onValueChange={(value) => handleFieldChange('is_family_files_income_tax', value)}
                             value={formData.is_family_files_income_tax || 'No'}
@@ -348,7 +348,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                 <h3 className="text-xl font-medium tracking-tight mb-4">Property Information</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2 col-span-full">
-                        <Label>Do you have any property which you can give for mortgage?</Label>
+                        <Label>Do you have any property which you can give for mortgage?<span className='text-red-500'>*</span></Label>
                         <RadioGroup
                             onValueChange={(value) => handleFieldChange('have_property_for_mortgage', value)}
                             value={formData.have_property_for_mortgage || 'No'}
@@ -368,7 +368,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                         {formData.have_property_for_mortgage === 'Yes' && (
                             <>
                                 <div className="space-y-2 mt-4">
-                                    <Label htmlFor="property_location">Your property is located in :-</Label>
+                                    <Label htmlFor="property_location">Your property is located in :-<span className='text-red-500'>*</span></Label>
                                     <Select
                                         onValueChange={(value) => handleFieldChange('property_location', value)}
                                         value={formData.property_location || ''}
@@ -386,7 +386,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                                     {errors.property_location && <p className="text-red-500 text-xs mt-1">{errors.property_location}</p>}
                                 </div>
                                 <div className="space-y-2 mt-4">
-                                    <Label htmlFor="who_own_property">Who is the owner of property?</Label>
+                                    <Label htmlFor="who_own_property">Who is the owner of property?<span className='text-red-500'>*</span></Label>
                                     <Select
                                         onValueChange={(value) => handleFieldChange('who_own_property', value)}
                                         value={formData.who_own_property || ''}
@@ -410,7 +410,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                         )}
                     </div>
                     <div className="space-y-2 col-span-full">
-                        <Label>Do you have 17 khata agriculture land?</Label>
+                        <Label>Do you have 17 khata agriculture land?<span className='text-red-500'>*</span></Label>
                         <RadioGroup
                             onValueChange={(value) => handleFieldChange('have_17_kahta_agri_land', value)}
                             value={formData.have_17_kahta_agri_land || 'No'}
@@ -428,7 +428,7 @@ const Employment = ({ formData, setFormData, errors }) => {
                         {errors.have_17_kahta_agri_land && <p className="text-red-500 text-xs mt-1">{errors.have_17_kahta_agri_land}</p>}
                     </div>
                     <div className="space-y-2 col-span-full">
-                        <Label>We need the following documents of property, select which are available?</Label>
+                        <Label>We need the following documents of property, select which are available?<span className='text-red-500'>*</span></Label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             {['Khatiyan (In case of inherited property)', 'Sale deed (If you have purchase property)', 'LPC certificate', 'Current rashid of property'].map(optionLabel => (
                                 <div key={optionLabel} className="flex items-center space-x-2">

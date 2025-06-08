@@ -248,9 +248,9 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
                     <div className="space-y-2">
                         <Label htmlFor="co_applicant_dob">Co-applicant's Date of Birth</Label>
                         <Input
-                            type="text"
+                            type="date"
                             id="co_applicant_dob"
-                            value={formData.applicant_name || ''}
+                            value={formData.co_applicant_dob || ''}
                             onChange={(e) => handleFieldChange('co_applicant_dob', e.target.value)}
                             className={cn(errors.co_applicant_dob && "border-red-500 focus-visible:ring-red-500")}
                         />

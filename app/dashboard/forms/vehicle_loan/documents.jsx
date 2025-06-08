@@ -14,7 +14,6 @@ const Documents = ({ formData, setFormData, errors }) => {
 
   return (
     <div className="flex flex-col p-4">
-
       {/* Personal Documents Section */}
       <div className="mb-8 pb-6 border-b border-gray-200">
         <h3 className="text-xl font-medium tracking-tight mb-4">
@@ -112,159 +111,159 @@ const Documents = ({ formData, setFormData, errors }) => {
           </div>
         </div>
       </div>
-
-
       {/* Employment (if job) Documents Section */}
-      <div className="mb-8 pb-6">
-        <h3 className="text-xl font-medium tracking-tight mb-4">
-          Employment Documents
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <div className="space-y-2">
-            <Label htmlFor="salary_slip_1">Salary slip-1 </Label>
-            <Input
-              type="file"
-              id="salary_slip_1"
-              onChange={handleFileChange}
-              className={cn(errors.salary_slip_1 && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.salary_slip_1 && <p className="text-red-500 text-xs mt-1">{errors.salary_slip_1}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="salary_slip_2">Salary slip-2</Label>
-            <Input
-              type="file"
-              id="salary_slip_2"
-              onChange={handleFileChange}
-              className={cn(errors.salary_slip_2 && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.salary_slip_2 && <p className="text-red-500 text-xs mt-1">{errors.salary_slip_2}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="salary_slip_3">Salary slip-3</Label>
-            <Input
-              type="file"
-              id="salary_slip_3"
-              onChange={handleFileChange}
-              className={cn(errors.salary_slip_3 && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.salary_slip_3 && <p className="text-red-500 text-xs mt-1">{errors.salary_slip_3}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="form_16_itr_1">Form-16  ITR-1</Label>
-            <Input
-              type="file"
-              id="form_16_itr_1"
-              onChange={handleFileChange}
-              className={cn(errors.form_16_itr_1 && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.form_16_itr_1 && <p className="text-red-500 text-xs mt-1">{errors.form_16_itr_1}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="form_16_itr_2">Form-16  ITR-2</Label>
-            <Input
-              type="file"
-              id="form_16_itr_2"
-              onChange={handleFileChange}
-              className={cn(errors.form_16_itr_2 && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.form_16_itr_2 && <p className="text-red-500 text-xs mt-1">{errors.form_16_itr_2}</p>}
+      {
+        formData.profession === "Job" &&
+        <div className="mb-8 pb-6">
+          <h3 className="text-xl font-medium tracking-tight mb-4">
+            Employment Documents
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="space-y-2">
+              <Label htmlFor="salary_slip_1">Salary slip-1<span className='text-red-500'>*</span> </Label>
+              <Input
+                type="file"
+                id="salary_slip_1"
+                onChange={handleFileChange}
+                className={cn(errors.salary_slip_1 && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.salary_slip_1 && <p className="text-red-500 text-xs mt-1">{errors.salary_slip_1}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="salary_slip_2">Salary slip-2</Label>
+              <Input
+                type="file"
+                id="salary_slip_2"
+                onChange={handleFileChange}
+                className={cn(errors.salary_slip_2 && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.salary_slip_2 && <p className="text-red-500 text-xs mt-1">{errors.salary_slip_2}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="salary_slip_3">Salary slip-3</Label>
+              <Input
+                type="file"
+                id="salary_slip_3"
+                onChange={handleFileChange}
+                className={cn(errors.salary_slip_3 && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.salary_slip_3 && <p className="text-red-500 text-xs mt-1">{errors.salary_slip_3}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="form_16_itr_1">Form-16  ITR-1<span className='text-red-500'>*</span></Label>
+              <Input
+                type="file"
+                id="form_16_itr_1"
+                onChange={handleFileChange}
+                className={cn(errors.form_16_itr_1 && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.form_16_itr_1 && <p className="text-red-500 text-xs mt-1">{errors.form_16_itr_1}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="form_16_itr_2">Form-16  ITR-2</Label>
+              <Input
+                type="file"
+                id="form_16_itr_2"
+                onChange={handleFileChange}
+                className={cn(errors.form_16_itr_2 && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.form_16_itr_2 && <p className="text-red-500 text-xs mt-1">{errors.form_16_itr_2}</p>}
+            </div>
           </div>
         </div>
-      </div>
-
-
+      }
       {/* if (business) Business documents */}
-      <div className="mb-8 pb-6">
-        <h3 className="text-xl font-medium tracking-tight mb-4">
-          Business and Utility Documents
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <div className="space-y-2">
-            <Label htmlFor="electricity_bill">House Electricity Bill</Label>
-            <Input
-              type="file"
-              id="electricity_bill"
-              onChange={handleFileChange}
-              className={cn(errors.electricity_bill && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.electricity_bill && <p className="text-red-500 text-xs mt-1">{errors.electricity_bill}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="business_images">Your Business Images</Label>
-            <Input
-              type="file"
-              id="business_images"
-              onChange={handleFileChange}
-              className={cn(errors.business_images && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.business_images && <p className="text-red-500 text-xs mt-1">{errors.business_images}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="business_proof">Business Registration Proof</Label>
-            <Input
-              type="file"
-              id="business_proof"
-              onChange={handleFileChange}
-              className={cn(errors.business_proof && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.business_proof && <p className="text-red-500 text-xs mt-1">{errors.business_proof}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="itr_1">ITR-1</Label>
-            <Input
-              type="file"
-              id="itr_1"
-              onChange={handleFileChange}
-              className={cn(errors.itr_1 && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.itr_1 && <p className="text-red-500 text-xs mt-1">{errors.itr_1}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="itr_2">ITR-2</Label>
-            <Input
-              type="file"
-              id="itr_2"
-              onChange={handleFileChange}
-              className={cn(errors.itr_2 && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.itr_2 && <p className="text-red-500 text-xs mt-1">{errors.itr_2}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="another_1">Another-1</Label>
-            <Input
-              type="file"
-              id="another_1"
-              onChange={handleFileChange}
-              className={cn(errors.another_1 && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.another_1 && <p className="text-red-500 text-xs mt-1">{errors.another_1}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="another_2">Another-2</Label>
-            <Input
-              type="file"
-              id="another_2"
-              onChange={handleFileChange}
-              className={cn(errors.another_2 && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.another_2 && <p className="text-red-500 text-xs mt-1">{errors.another_2}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="another_3">Another-3</Label>
-            <Input
-              type="file"
-              id="another_3"
-              onChange={handleFileChange}
-              className={cn(errors.another_3 && "border-red-500 focus-visible:ring-red-500")}
-            />
-            {errors.another_3 && <p className="text-red-500 text-xs mt-1">{errors.another_3}</p>}
+      {
+        formData.profession === "Business" &&
+        <div className="mb-8 pb-6">
+          <h3 className="text-xl font-medium tracking-tight mb-4">
+            Business and Utility Documents
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="space-y-2">
+              <Label htmlFor="electricity_bill">House Electricity Bill <span className='text-red-500'>*</span></Label>
+              <Input
+                type="file"
+                id="electricity_bill"
+                onChange={handleFileChange}
+                className={cn(errors.electricity_bill && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.electricity_bill && <p className="text-red-500 text-xs mt-1">{errors.electricity_bill}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="business_images">Your Business Images<span className='text-red-500'>*</span></Label>
+              <Input
+                type="file"
+                id="business_images"
+                onChange={handleFileChange}
+                className={cn(errors.business_images && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.business_images && <p className="text-red-500 text-xs mt-1">{errors.business_images}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="business_proof">Business Registration Proof<span className='text-red-500'>*</span></Label>
+              <Input
+                type="file"
+                id="business_proof"
+                onChange={handleFileChange}
+                className={cn(errors.business_proof && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.business_proof && <p className="text-red-500 text-xs mt-1">{errors.business_proof}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="itr_1">ITR-1<span className='text-red-500'>*</span></Label>
+              <Input
+                type="file"
+                id="itr_1"
+                onChange={handleFileChange}
+                className={cn(errors.itr_1 && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.itr_1 && <p className="text-red-500 text-xs mt-1">{errors.itr_1}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="itr_2">ITR-2<span className='text-red-500'>*</span></Label>
+              <Input
+                type="file"
+                id="itr_2"
+                onChange={handleFileChange}
+                className={cn(errors.itr_2 && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.itr_2 && <p className="text-red-500 text-xs mt-1">{errors.itr_2}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="another_1">Another-1</Label>
+              <Input
+                type="file"
+                id="another_1"
+                onChange={handleFileChange}
+                className={cn(errors.another_1 && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.another_1 && <p className="text-red-500 text-xs mt-1">{errors.another_1}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="another_2">Another-2</Label>
+              <Input
+                type="file"
+                id="another_2"
+                onChange={handleFileChange}
+                className={cn(errors.another_2 && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.another_2 && <p className="text-red-500 text-xs mt-1">{errors.another_2}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="another_3">Another-3</Label>
+              <Input
+                type="file"
+                id="another_3"
+                onChange={handleFileChange}
+                className={cn(errors.another_3 && "border-red-500 focus-visible:ring-red-500")}
+              />
+              {errors.another_3 && <p className="text-red-500 text-xs mt-1">{errors.another_3}</p>}
+            </div>
           </div>
         </div>
-      </div>
-
+      }
       {/* property section */}
-
       <div className="mb-8 pb-6">
         <h3 className="text-xl font-medium tracking-tight mb-4">
           Property Documents
@@ -342,9 +341,6 @@ const Documents = ({ formData, setFormData, errors }) => {
           </div>
         </div>
       </div>
-
-
-
       {/* Vehicle details section */}
       <div className="mb-8 pb-6">
         <h3 className="text-xl font-medium tracking-tight mb-4">
@@ -423,9 +419,6 @@ const Documents = ({ formData, setFormData, errors }) => {
           </div>
         </div>
       </div>
-
-
-
     </div>
   );
 };

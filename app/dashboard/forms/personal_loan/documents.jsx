@@ -22,7 +22,7 @@ const Documents = ({ formData, setFormData, errors }) => {
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <div className="space-y-2">
-            <Label htmlFor="applicant_selfie">Upload Applicant Selfie</Label>
+            <Label htmlFor="applicant_selfie">Upload Applicant Selfie<span className='text-red-500'>*</span></Label>
             <Input
               type="file"
               id="applicant_selfie"
@@ -32,7 +32,7 @@ const Documents = ({ formData, setFormData, errors }) => {
             {errors.applicant_selfie && <p className="text-red-500 text-xs mt-1">{errors.applicant_selfie}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="aadhar_front">Upload aadhar front image</Label>
+            <Label htmlFor="aadhar_front">Upload aadhar front image<span className='text-red-500'>*</span></Label>
             <Input
               type="file"
               id="aadhar_front"
@@ -42,7 +42,7 @@ const Documents = ({ formData, setFormData, errors }) => {
             {errors.aadhar_front && <p className="text-red-500 text-xs mt-1">{errors.aadhar_front}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="aadhar_back">Upload aadhar back image</Label>
+            <Label htmlFor="aadhar_back">Upload aadhar back image<span className='text-red-500'>*</span></Label>
             <Input
               type="file"
               id="aadhar_back"
@@ -52,7 +52,7 @@ const Documents = ({ formData, setFormData, errors }) => {
             {errors.aadhar_back && <p className="text-red-500 text-xs mt-1">{errors.aadhar_back}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="Personal_pan">Upload Personal PAN image</Label>
+            <Label htmlFor="Personal_pan">Upload Personal PAN image<span className='text-red-500'>*</span></Label>
             <Input
               type="file"
               id="Personal_pan"
@@ -71,7 +71,7 @@ const Documents = ({ formData, setFormData, errors }) => {
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <div className="space-y-2">
-            <Label htmlFor="salary_slip_1">Salary slip-1 </Label>
+            <Label htmlFor="salary_slip_1">Salary slip-1<span className='text-red-500'>*</span> </Label>
             <Input
               type="file"
               id="salary_slip_1"
@@ -81,7 +81,7 @@ const Documents = ({ formData, setFormData, errors }) => {
             {errors.salary_slip_1 && <p className="text-red-500 text-xs mt-1">{errors.salary_slip_1}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="salary_slip_2">Salary slip-2</Label>
+            <Label htmlFor="salary_slip_2">Salary slip-2<span className='text-red-500'>*</span></Label>
             <Input
               type="file"
               id="salary_slip_2"
@@ -112,6 +112,85 @@ const Documents = ({ formData, setFormData, errors }) => {
           </div>
         </div>
       </div>
+
+      {/* property section
+      <div className="mb-8 pb-6">
+        <h3 className="text-xl font-medium tracking-tight mb-4">
+          Property Documents
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="space-y-2">
+            <Label htmlFor="sale_deed">Sale Deed / Khatiyan</Label>
+            <Input
+              type="file"
+              id="sale_deed"
+              onChange={handleFileChange}
+              className={cn(errors.sale_deed && "border-red-500 focus-visible:ring-red-500")}
+            />
+            {errors.sale_deed && <p className="text-red-500 text-xs mt-1">{errors.sale_deed}</p>}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="mutation">Mutation / Dakhil-Kharij</Label>
+            <Input
+              type="file"
+              id="mutation"
+              onChange={handleFileChange}
+              className={cn(errors.mutation && "border-red-500 focus-visible:ring-red-500")}
+            />
+            {errors.mutation && <p className="text-red-500 text-xs mt-1">{errors.mutation}</p>}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="rashid">Current Rashid</Label>
+            <Input
+              type="file"
+              id="rashid"
+              onChange={handleFileChange}
+              className={cn(errors.rashid && "border-red-500 focus-visible:ring-red-500")}
+            />
+            {errors.rashid && <p className="text-red-500 text-xs mt-1">{errors.rashid}</p>}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="lpc">LPC</Label>
+            <Input
+              type="file"
+              id="lpc"
+              onChange={handleFileChange}
+              className={cn(errors.lpc && "border-red-500 focus-visible:ring-red-500")}
+            />
+            {errors.lpc && <p className="text-red-500 text-xs mt-1">{errors.lpc}</p>}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="property_pic">Property Front Picture</Label>
+            <Input
+              type="file"
+              id="property_pic"
+              onChange={handleFileChange}
+              className={cn(errors.property_pic && "border-red-500 focus-visible:ring-red-500")}
+            />
+            {errors.property_pic && <p className="text-red-500 text-xs mt-1">{errors.property_pic}</p>}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="property_map">Property Map</Label>
+            <Input
+              type="file"
+              id="property_map"
+              onChange={handleFileChange}
+              className={cn(errors.property_map && "border-red-500 focus-visible:ring-red-500")}
+            />
+            {errors.property_map && <p className="text-red-500 text-xs mt-1">{errors.property_map}</p>}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="chain_deed">Chain Deed</Label>
+            <Input
+              type="file"
+              id="chain_deed"
+              onChange={handleFileChange}
+              className={cn(errors.chain_deed && "border-red-500 focus-visible:ring-red-500")}
+            />
+            {errors.chain_deed && <p className="text-red-500 text-xs mt-1">{errors.chain_deed}</p>}
+          </div>
+        </div>
+      </div> */}
     </div>
   );
 };
