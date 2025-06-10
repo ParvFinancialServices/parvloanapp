@@ -59,7 +59,7 @@ const LoanDataTable = ({ initialData = [], columns, pageSize = 10 }) => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full p-6">
       {/* Filter Inputs */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         {columns.map(
@@ -85,7 +85,7 @@ const LoanDataTable = ({ initialData = [], columns, pageSize = 10 }) => {
       </div>
 
       {/* Data Table */}
-      <div className="rounded-md border shadow-sm overflow-hidden">
+      <div className="rounded-md p-6 border shadow-sm overflow-hidden">
         <Table>
           <TableHeader>
             <TableRow key="header">
