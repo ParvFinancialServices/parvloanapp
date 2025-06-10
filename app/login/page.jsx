@@ -3,7 +3,7 @@
 import { login } from "@/lib/actions/login.js";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
-import { useUserState } from "../dashboard/store/index";
+// import { useUserState } from "../dashboard/store/index";
 import { useRouter } from "next/navigation";
 import { getAuth, signInWithCustomToken } from "firebase/auth";
 import app from "@/lib/firebaseConfig";
@@ -14,6 +14,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Loader2Icon } from "lucide-react";
 import { EyeOff } from "lucide-react";
 import { Eye } from "lucide-react";
+import { useUserState } from "../dashboard/store";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
