@@ -118,17 +118,26 @@ export const loanApplicationSchema = z
     // Documents -> Personal Documents
     aadhar_front: z
       .any()
-      .refine((val) => val instanceof File, "Aadhar Front image is required."),
+      .refine(
+        (val) => val instanceof File || typeof val == "string",
+        "Aadhar Front image is required."
+      ),
     aadhar_back: z
       .any()
-      .refine((val) => val instanceof File, "Aadhar Back image is required."),
+      .refine(
+        (val) => val instanceof File || typeof val == "string",
+        "Aadhar Back image is required."
+      ),
     personal_pan_upload: z
       .any()
-      .refine((val) => val instanceof File, "Personal PAN image is required."), // Corrected ID
+      .refine(
+        (val) => val instanceof File || typeof val == "string",
+        "Personal PAN image is required."
+      ), // Corrected ID
     house_electricity: z
       .any()
       .refine(
-        (val) => val instanceof File,
+        (val) => val instanceof File || typeof val == "string",
         "Present address proof (electricity bill) is required."
       ),
   })

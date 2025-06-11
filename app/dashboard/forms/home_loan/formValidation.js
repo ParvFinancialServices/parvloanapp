@@ -141,20 +141,20 @@ export const loanApplicationSchema = z
     // Document Uploads
     applicant_selfie: z
       .any()
-      .refine((val) => val instanceof File, "Applicant Selfie is required."),
+      .refine((val) => val instanceof File || typeof val == "string", "Applicant Selfie is required."),
     aadhar_front: z
       .any()
-      .refine((val) => val instanceof File, "Aadhar Front image is required."),
+      .refine((val) => val instanceof File || typeof val == "string", "Aadhar Front image is required."),
     aadhar_back: z
       .any()
-      .refine((val) => val instanceof File, "Aadhar Back image is required."),
+      .refine((val) => val instanceof File || typeof val == "string", "Aadhar Back image is required."),
     personal_pan_upload: z
       .any()
-      .refine((val) => val instanceof File, "Personal PAN image is required."),
+      .refine((val) => val instanceof File || typeof val == "string", "Personal PAN image is required."),
     company_image: z
       .any()
       .refine(
-        (val) => val instanceof File,
+        (val) => val instanceof File || typeof val == "string",
         "Company / firm image is required."
       ),
     gst_certificate: z.any().optional(), // Optional, or conditional if registration_paper includes GST
@@ -164,20 +164,20 @@ export const loanApplicationSchema = z
     itr_2: z.any().optional(), // Optional, or conditional
     bank_statement: z
       .any()
-      .refine((val) => val instanceof File, "Bank statement is required."),
+      .refine((val) => val instanceof File || typeof val == "string", "Bank statement is required."),
     shop_front: z
       .any()
-      .refine((val) => val instanceof File, "Shop front picture is required."),
+      .refine((val) => val instanceof File || typeof val == "string", "Shop front picture is required."),
     house_electricity: z
       .any()
       .refine(
-        (val) => val instanceof File,
+        (val) => val instanceof File || typeof val == "string",
         "House electricity bill is required."
       ),
     other_doc: z.any().optional(),
     rashid: z
       .any()
-      .refine((val) => val instanceof File, "Rashid document is required."), // New for Home Loan
+      .refine((val) => val instanceof File || typeof val == "string", "Rashid document is required."), // New for Home Loan
   })
   .superRefine((data, ctx) => {
     // Conditional validations for Personal Details
