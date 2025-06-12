@@ -129,20 +129,32 @@ export const loanApplicationSchema = z
     // Document Uploads
     photo: z
       .any()
-      .refine((val) => val instanceof File, "Photo is required."),
+      .refine(
+        (val) => val instanceof File || typeof val == "string",
+        "Photo is required."
+      ),
     aadhar_front: z
       .any()
-      .refine((val) => val instanceof File, "Aadhar Front image is required."),
+      .refine(
+        (val) => val instanceof File || typeof val == "string",
+        "Aadhar Front image is required."
+      ),
     aadhar_back: z
       .any()
-      .refine((val) => val instanceof File, "Aadhar Back image is required."),
+      .refine(
+        (val) => val instanceof File || typeof val == "string",
+        "Aadhar Back image is required."
+      ),
     personal_pan_upload: z
       .any()
-      .refine((val) => val instanceof File, "Personal PAN image is required."),
+      .refine(
+        (val) => val instanceof File || typeof val == "string",
+        "Personal PAN image is required."
+      ),
     company_image: z
       .any()
       .refine(
-        (val) => val instanceof File,
+        (val) => val instanceof File || typeof val == "string",
         "Company / firm image is required."
       ),
     gst_certificate: z.any().optional(), // Conditional in superRefine
@@ -152,14 +164,20 @@ export const loanApplicationSchema = z
     itr_2024_2025: z.any().optional(), // Conditional in superRefine
     bank_statement: z
       .any()
-      .refine((val) => val instanceof File, "Bank statement is required."),
+      .refine(
+        (val) => val instanceof File || typeof val == "string",
+        "Bank statement is required."
+      ),
     shop_front: z
       .any()
-      .refine((val) => val instanceof File, "Shop front picture is required."),
+      .refine(
+        (val) => val instanceof File || typeof val == "string",
+        "Shop front picture is required."
+      ),
     house_electricity: z
       .any()
       .refine(
-        (val) => val instanceof File,
+        (val) => val instanceof File || typeof val == "string",
         "House electricity bill is required."
       ),
     other_doc: z.any().optional(), // Optional file upload
@@ -250,8 +268,8 @@ export const loanApplicationSchema = z
 
     if (data.file_income_tax === "Yes") {
       if (
-        !(data.itr_1_upload instanceof File) &&
-        !(data.itr_2_upload instanceof File)
+        !(data.itr_1_upload instanceof File || typeof val == "string") &&
+        !(data.itr_2_upload instanceof File || typeof val == "string")
       ) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,

@@ -1,10 +1,8 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { multiValueFilter } from "@/lib/utils";
-import { ArrowUpDown } from "lucide-react";
-import { Pencil } from "lucide-react";
+import { PencilIcon } from "lucide-react";
 import Link from "next/link";
 
 export const columns = [
@@ -13,7 +11,7 @@ export const columns = [
     header: "Type",
     enableColumnFilter: true,
     filterFn: multiValueFilter,
-    filterable:true,
+    filterable: true,
   },
   {
     accessor: "loanid",
@@ -51,15 +49,13 @@ export const columns = [
     cell: ({ row }) => <Badge>{row.original.status}</Badge>,
   },
   {
-    accessor:"edit",
+    accessor: "edit",
     id: "edit",
     enableHiding: false,
     cell: ({ row }) => {
       return (
-        <Link
-          href={`/dashboard/admin/edit/loans?type=${row.original.type}&id=${row.original.loanid}`}
-        >
-          <Pencil height="16px"/>
+        <Link href={`/dashboard/admin/edit/loan/${row.original.loanid}`}>
+          <PencilIcon height="16px" />
         </Link>
       );
     },

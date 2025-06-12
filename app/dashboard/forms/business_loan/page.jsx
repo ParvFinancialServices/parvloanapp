@@ -258,6 +258,7 @@ const App = () => {
 
     // Identify file fields to process based on the flat formData structure
     const fileFields = [
+      "photo",
       "aadhar_front",
       "aadhar_back",
       "personal_pan_upload",
