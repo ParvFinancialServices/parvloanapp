@@ -10,6 +10,7 @@ import Table from "@/components/common/Table";
 // import { getConnectorsData } from "@/lib/actions/connector";
 import { useUserState } from "@/app/dashboard/store";
 import { getConnectorsData } from "@/lib/actions/file_action";
+import Spinners from "@/components/common/Spinners";
 
 export const extractTableData = (data, list) => {
   let result = [];
@@ -78,7 +79,9 @@ export default function Page() {
           filterData={filterData}
         />
       ) : (
-        <p>loading..</p>
+        <div>
+          <Spinners/>
+        </div>
       )}
     </div>
   );

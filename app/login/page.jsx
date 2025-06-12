@@ -15,6 +15,9 @@ import { Loader2Icon } from "lucide-react";
 import { EyeOff } from "lucide-react";
 import { Eye } from "lucide-react";
 import { useUserState } from "../dashboard/store";
+import { AlignLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -101,6 +104,7 @@ export default function LoginPage() {
         />
       </div>
       <div className="flex flex-col gap-4 p-6 md:p-10">
+        <Link href={"/"} className="flex text-blue-500 hover:underline items-center"><ChevronLeft size={19}/>Back</Link>
         <div className="flex flex-1 items-center justify-center">
           <form
             className="flex flex-col border p-10 rounded-2xl w-[30rem] max-w-md items-start"
