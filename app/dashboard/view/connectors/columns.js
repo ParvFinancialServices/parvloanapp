@@ -21,12 +21,12 @@ export const columns = [
     enableColumnFilter: false,
   },
   {
-    accessorKey: "name",
+    accessorKey: "full_name",
     header: "Name",
     enableColumnFilter: false,
   },
   {
-    accessorKey: "doj",
+    accessorKey: "date_of_joining",
     header: ({ column }) => {
       return (
         <Button
@@ -38,16 +38,24 @@ export const columns = [
         </Button>
       );
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("doj")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("date_of_joining")}</div>,
     enableColumnFilter: false,
   },
+  // {
+  //   accessorKey: "guardian_name",
+  //   header: ({ column }) => {
+  //     return (
+  //       ''
+  //     );
+  //   },
+  // },
   {
     id: "edit",
     enableHiding: false,
     cell: ({ row }) => {
       return (
         <Link
-          href={`/dashboard/admin/edit/profile?username=${row.original.username}&role=DSA`}
+          href={`/dashboard/admin/profile?username=${row.original.username}&role=DSA`}
         >
           <Pencil height="16px" />
         </Link>

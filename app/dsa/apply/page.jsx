@@ -15,6 +15,7 @@ import { createDSAAccount, submitDSAForm } from "@/lib/actions/dsa";
 import { useState } from "react";
 import { validateAllFields } from "./formValidation"; // Import the new validation file
 import { cn, get_upload_promises } from "@/lib/utils"; // Import cn for conditional classnames
+import { redirect, useRouter } from "next/navigation";
 
 const SimpleDSAForm = () => {
   const [form, setForm] = useState({
@@ -45,6 +46,7 @@ const SimpleDSAForm = () => {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router=useRouter();
 
   // Generic handler for text/date/tel inputs
   const handleChange = (e) => {
@@ -122,6 +124,15 @@ const SimpleDSAForm = () => {
       await Promise.all(uploadPromises);
 
       const result = await createDSAAccount(dataToSubmit); // Call your actual submission action
+
+      // const result2=await submitDSAForm(dataToSubmit);\
+      if(result?.err){
+        alert(result?.err);
+        setIsSubmitting(false);
+        return;
+      }
+
+
       console.log(result);
       alert("Form submitted successfully!");
       // Optionally clear form after successful submission
@@ -153,6 +164,8 @@ const SimpleDSAForm = () => {
       // alert("Form submission failed. Please try again.");
     } finally {
       setIsSubmitting(false); // End submission process
+      // router?.push("/login");
+      redirect("/login")
     }
   };
 
@@ -163,7 +176,7 @@ const SimpleDSAForm = () => {
         <h2 className="text-center text-2xl font-bold pb-6">
           Create New Account
         </h2>
-        <form onSubmit={submitForm}>
+        <form >
           <div className=" grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3 ">
             {/* Full Name */}
             <div className="space-y-2 w-full">

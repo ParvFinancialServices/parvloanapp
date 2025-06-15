@@ -17,7 +17,6 @@ const LoanDataTable = ({ initialData = [], columns, pageSize = 10 }) => {
   const [data, setData] = useState(initialData);
   const [filters, setFilters] = useState({}); // Filters for each column
   const [currentPage, setCurrentPage] = useState(1);
-
   // Effect to apply filters and update data when initialData or filters change
   useEffect(() => {
     let filtered = initialData.filter((item) => {
@@ -27,7 +26,10 @@ const LoanDataTable = ({ initialData = [], columns, pageSize = 10 }) => {
         return !filterValue || itemValue.includes(filterValue);
       });
     });
+
     setData(filtered);
+    console.log(filtered);
+
     setCurrentPage(1); // Reset to first page on filter change
   }, [initialData, filters]);
 
@@ -108,7 +110,14 @@ const LoanDataTable = ({ initialData = [], columns, pageSize = 10 }) => {
                       key={column.accessor}
                       className="py-3 px-4 text-sm text-gray-800"
                     >
-                      {item.data[column.accessor]}
+                      {/* {item.data[column.accessor]}*/}
+
+                      {column.cell
+                        ? column.cell({ row: { original: item.data, id: item.id } })
+                        : column.accessor
+                          ? item.data[column.accessor]
+                          : item[column.id]} 
+
                     </TableCell>
                   ))}
                 </TableRow>

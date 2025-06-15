@@ -68,7 +68,8 @@ export default function LoginPage() {
             router.push("/dashboard/forms/personal_loan");
             break;
           case "DSA":
-            router.push("/dashboard/connector");
+            // router.push("/dashboard/connector");
+            router.push("/dashboard/dsa/profile");
             break;
           case "Telecaller":
             router.push("/dashboard/telecaller");

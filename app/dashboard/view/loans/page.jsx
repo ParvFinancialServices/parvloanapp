@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getLoanData } from "@/lib/actions/loan";
+import { getLoanData, getLoanDataByUsername } from "@/lib/actions/loan";
 import { useUserState } from "@/app/dashboard/store";
 import LoanDataTable from "./loan_data_table";
 import { columns } from "./columns";
@@ -8,13 +8,20 @@ import { columns } from "./columns";
 const Page = () => {
   const userState = useUserState();
   const [data, setData] = useState([]);
+  // const [loanId,setLoanId]=useState();
   useEffect(() => {
     console.log(userState);
     userState.user.getIdToken().then((token) => {
       console.log(token);
       getLoanData(token, "").then((res) => {
-        console.log(JSON.parse(res.data));
-        setData(JSON.parse(res.data));
+      // getLoanDataByUsername(token, userState?.profile?.username).then((res) => {
+        // console.log(JSON.parse(res));
+        // console.log(res?.data);
+        setData(JSON.parse(res?.data));
+        // setLoanId(JSON.parse(res?.id))
+        // setData(res?.data);
+
+
         // const result = extractTableData(res.data, "");
         // console.log(result);
         // let d = {
@@ -30,6 +37,8 @@ const Page = () => {
       });
     });
   }, []);
+  console.log(data);
+  
 
   return (
     <div>

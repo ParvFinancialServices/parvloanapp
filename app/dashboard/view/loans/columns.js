@@ -1,8 +1,8 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { multiValueFilter } from "@/lib/utils";
-import { PencilIcon } from "lucide-react";
 import Link from "next/link";
 
 export const columns = [
@@ -14,8 +14,9 @@ export const columns = [
     filterable: true,
   },
   {
-    accessor: "loanid",
+    accessor: "id",
     header: "Loan ID",
+    cell:({row})=><div>{row?.id}</div>,
     enableColumnFilter: false,
   },
   {
@@ -26,7 +27,7 @@ export const columns = [
   {
     accessor: "date",
     header: "date",
-    cell: ({ row }) => <div className="lowercase">{row.getValue("date")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.original.date}</div>,
     enableColumnFilter: false,
   },
   {
@@ -48,17 +49,18 @@ export const columns = [
     filterFn: multiValueFilter,
     cell: ({ row }) => <Badge>{row.original.status}</Badge>,
   },
+
   {
-    accessor: "edit",
-    id: "edit",
-    enableHiding: false,
+    id: "view",
+    header: "View",
     cell: ({ row }) => {
       return (
-        <Link href={`/dashboard/admin/edit/loan/${row.original.loanid}`}>
-          <PencilIcon height="16px" />
+        <Link href={`/dashboard/view/loans/${row?.id}`}>
+          <Button size={'sm'} variant={"outline"} className={'cursor-pointer'}>View</Button>
         </Link>
-      );
+      )
     },
-    enableColumnFilter: false,
-  },
+  }
+
+
 ];
