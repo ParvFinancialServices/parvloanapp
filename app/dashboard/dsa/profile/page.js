@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import DSA from './DSA'
 import { useSearchParams } from 'next/navigation'
 import { getDSADataById } from '@/lib/actions/dsa'
 import { useUserState } from '../../store'
