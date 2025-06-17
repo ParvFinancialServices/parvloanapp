@@ -53,9 +53,7 @@ export default function Page() {
           //   type: extractParticularField(list[2], res.data),
           //   status: extractParticularField(list[3], res.data),
         };
-        console.log(result);
-        console.log(d);
-        setData(result);
+        setData(res?.data);
         setFilter(d);
         setIsLoading(false);
       });

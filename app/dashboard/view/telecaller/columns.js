@@ -30,12 +30,12 @@ export const columns = [
     enableColumnFilter: false,
   },
   {
-    accessorKey: "name",
+    accessorKey: "full_name",
     header: "Name",
     enableColumnFilter: false,
   },
   {
-    accessorKey: "doj",
+    accessorKey: "date_of_joining",
     header: ({ column }) => {
       return (
         <Button
@@ -47,7 +47,7 @@ export const columns = [
         </Button>
       );
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("doj")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("date_of_joining")}</div>,
     enableColumnFilter: false,
   },
   {
@@ -59,14 +59,16 @@ export const columns = [
     enableColumnFilter: false,
   },
   {
-    id: "edit",
+    id: "view",
     enableHiding: false,
     cell: ({ row }) => {
       return (
         <Link
-          href={`/dashboard/admin/edit/profile?username=${row.original.username}&role=Telecaller`}
+          href={`/dashboard/admin/profile?username=${row?.original?.username}&role=Telecaller`}
         >
-          <Pencil height="16px" />
+          <Button variant="outline" className="flex items-center gap-2 cursor-pointer">
+            View Profile
+          </Button>
         </Link>
       );
     },

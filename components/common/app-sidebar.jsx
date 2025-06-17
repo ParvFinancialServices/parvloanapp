@@ -25,7 +25,7 @@ export function AppSidebar({ ...props }) {
     case "Admin":
       roleData = AdminSidebar;
       break;
-    case "rm":
+    case "RM":
       roleData = RMSidebar;
       break;
     case "DSA":
@@ -51,8 +51,8 @@ export function AppSidebar({ ...props }) {
         </div>
       </div>
       <SidebarContent>
-        <NavMain items={roleData?.navMain} pathname={pathname} />
         <NavProjects projects={roleData?.projects} pathname={pathname} />
+        <NavMain items={roleData?.navMain} pathname={pathname} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={userState?.profile} />

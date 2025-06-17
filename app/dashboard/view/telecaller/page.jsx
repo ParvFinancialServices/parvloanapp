@@ -54,7 +54,7 @@ export default function Page() {
         };
         console.log(result);
         console.log(d);
-        setData(result);
+        setData(res?.data);
         setFilter(d);
         setIsLoading(false);
       });

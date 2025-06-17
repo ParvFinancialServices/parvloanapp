@@ -53,8 +53,8 @@ export default function DSA({ data }) {
             <div><strong>Name:</strong> {data?.full_name}</div>
             <div><strong>Guardian's name:</strong> {data?.guardians_name}</div>
             <div><strong>Aadhar Number:</strong> {data?.aadhar_no}</div>
-            <div><strong>PAN Number:</strong> {data?.guardians_name}</div>
-            <div><strong>Marrital Status:</strong> {data?.guardians_name}</div>
+            <div><strong>PAN Number:</strong> {data?.guardian_name}</div>
+            <div><strong>Marrital Status:</strong> {data?.marital_status}</div>
             <div><strong>Email:</strong>{data?.email}</div>
             <div><strong>Phone number:</strong> {data?.phone_no}</div>
             <div><strong>Alternate Phone Number:</strong> {data?.alt_phone_no}</div>

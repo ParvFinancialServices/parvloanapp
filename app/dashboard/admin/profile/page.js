@@ -4,11 +4,13 @@ import DSA from './DSA'
 import { useSearchParams } from 'next/navigation'
 import { getDSADataById } from '@/lib/actions/dsa'
 import { useUserState } from '../../store'
+import { getProfile } from '@/lib/actions/common'
+import Profile from '@/components/common/Profile'
 
-const Profile = () => {
+const ProfilePage = () => {
   const searchParams = useSearchParams();
   const username = searchParams.get("username");
-  const role = searchParams.get("role");
+  // const role = searchParams.get("role");
   const [DSAData,setDSAData]=useState();
 
   const userState = useUserState();
@@ -24,7 +26,7 @@ const Profile = () => {
 
   const fetchDSAREcord = async() => {
     try {
-      const res =await getDSADataById(token,username);
+      const res =await getProfile(token,username);
       console.log(res);
       if(res){
         setDSAData(res?.data);
@@ -42,9 +44,10 @@ const Profile = () => {
 
   return (
     <div>
-      <DSA data={DSAData} />
+      {/* <DSA data={DSAData} /> */}
+      <Profile data={DSAData} />
     </div>
   )
 }
 
-export default Profile
+export default ProfilePage
