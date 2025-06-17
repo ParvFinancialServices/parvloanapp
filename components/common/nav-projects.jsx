@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/sidebar"
 
 export function NavProjects({
-  projects,
+  projects, pathname
 }) {
   const { isMobile } = useSidebar()
 
@@ -37,7 +37,11 @@ export function NavProjects({
         {projects?.map((item) => (
           <SidebarMenuItem key={item.title}>
             <SidebarMenuButton asChild>
-              <a href={item.url}>
+              <a href={item.url} className={
+                item?.url == pathname
+                  ? "bg-blue-500 text-white hover:bg-blue-400 hover:text-white"
+                  : "hover:bg-zinc-200"
+              }>
                 <item.icon />
                 <span>{item.title}</span>
               </a>

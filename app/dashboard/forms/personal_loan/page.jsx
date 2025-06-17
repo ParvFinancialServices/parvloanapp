@@ -166,10 +166,83 @@ function Page() {
     }
   };
 
+   const stepFields = {
+    0: [], // Instructions
+    1: [
+      // Vehicle Details
+      "which_vehicle",
+      "when_purchase",
+      "estimated_cost",
+      "loan_you_need",
+      "profession",
+    ],
+    2: [
+      // Personal Details
+      "loan_amount",
+      "id_of_connector",
+      "name_of_connector",
+      "applicant_name",
+      "fathers_name",
+      "mothers_name",
+      "phone_no",
+      "alt_phone_no",
+      "pan",
+      "dob",
+      "marital_status",
+      "spouse_name",
+      "permanent_building_name",
+      "permanent_street_name",
+      "permanent_landmark",
+      "permanent_city",
+      "permanent_district",
+      "permanent_state",
+      "permanent_pincode",
+      "same_as_permanent_address",
+      "present_building_name",
+      "present_street_name",
+      "present_landmark",
+      "present_city",
+      "present_district",
+      "present_state",
+      "present_pincode",
+    ],
+    3: [
+      // Employment & Loans
+      "company_name",
+      "company_age",
+      "registration_paper", // Business
+      "current_company_name",
+      "salary_account_bank",
+      "savings_account_bank",
+      "job_tenure",
+      "job_experience",
+      "monthly_income", // Job
+      "have_current_account",
+      "current_account_bank_name",
+      "name_in_current_account",
+      "current_account_age",
+      "current_account_turnover", // Current Account
+      "saving_account_bank_name",
+      "saving_account_turnover", // Saving Account
+      "loan_provider_bank",
+      "total_loan_amount_prev",
+      "current_emi",
+      "remaining_amount", // Previous Loan History
+      "have_property_for_mortage",
+      "property_location",
+      "who_own_property",
+      "have_17_kahta_agri_land",
+      "needs_of_documents", // Property Information
+    ],
+    4:[
+      "abhisel"
+    ]
+  };
   // Final submission handler from the dialog
   const handleFinalSubmit = async () => {
     // Validate all fields before final submission
-    const allFormErrors = validateAllFields(formData);
+    const fieldsToValidate = stepFields[step];
+    const allFormErrors = validateAllFields(formData,fieldsToValidate);
 
     if (Object.keys(allFormErrors).length > 0) {
       setErrors(allFormErrors);

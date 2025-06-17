@@ -11,6 +11,7 @@ import LoanCalculatorSection from '@/components/home/LoanCalculatorSection';
 import Services from '@/components/home/Services';
 import TestimonialSection from '@/components/home/TestimonialSection';
 import Head from 'next/head';
+import { Toaster } from 'react-hot-toast';
 
 
 export default function Home() {
@@ -43,6 +44,7 @@ export default function Home() {
           })}
         </script>
       </Head>
+      <Toaster/>
       <div className="w-screen min-h-screen h-fit flex flex-col bg-blue-100/75 relative">
         <NavbarNew />
         <main className="flex flex-col w-full h-fit">

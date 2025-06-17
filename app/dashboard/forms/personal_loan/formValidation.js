@@ -166,10 +166,11 @@ export const loanApplicationSchema = z
       ),
     salary_slip_3: z
       .any()
-      .refine(
-        (val) => val instanceof File || typeof val == "string",
-        "Salary Slip 3 is required."
-      ),
+      .optional(),
+      // .refine(
+      //   (val) => val instanceof File || typeof val == "string",
+      //   "Salary Slip 3 is required."
+      // ),
     other_doc: z.any().optional(), // Optional file upload
   })
   .superRefine((data, ctx) => {

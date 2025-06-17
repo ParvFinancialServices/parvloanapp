@@ -1,20 +1,34 @@
-/* --- Component: TestimonialDialog.tsx --- */
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-// import { submitTestimonial } from '@/lib/actions/submitTestimonial';
-// import { format } from 'date-fns';
+import { createTestimonial, getAllTestimonials } from '@/lib/actions/testimonials';
 
 export default function TestimonialDialog() {
     const [open, setOpen] = useState(false);
     const [form, setForm] = useState({ name: '', message: '', date: '', avatar: undefined });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [testimonials, setTestimonials] = useState([]);
+    console.log(testimonials);
+
+    useEffect(() => {
+        const fetchTestimonials = async () => {
+            const res = await getAllTestimonials();
+
+            if (res.success) {
+                setTestimonials(res.testimonials);
+            } else {
+                setError(res.message);
+            }
+        };
+
+        fetchTestimonials();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
@@ -25,18 +39,29 @@ export default function TestimonialDialog() {
         }
     };
 
-    //   const handleSubmit = async () => {
-    //     setLoading(true);
-    //     setError('');
-    //     const res = await submitTestimonial(form);
-    //     setLoading(false);
-    //     if (res.success) {
-    //       setForm({ name: '', message: '', date: '', avatar: undefined });
-    //       setOpen(false);
-    //     } else {
-    //       setError(res.message);
-    //     }
-    //   };
+    const handleSubmit = async () => {
+        setLoading(true);
+        setError('');
+
+        const formData = {
+            name: form?.name,
+            message: form?.message,
+            date: form?.date,
+            avatar: form?.avatar,
+        };
+
+        const res = await createTestimonial(formData);
+
+        setLoading(false);
+
+        if (res.success) {
+            setForm({ name: '', message: '', date: '', avatar: undefined });
+            setOpen(false);
+            // optionally: update local testimonial list
+        } else {
+            setError(res.message);
+        }
+    };
 
     return (
         <div>
@@ -59,7 +84,7 @@ export default function TestimonialDialog() {
                     </div>
                     <div className="flex justify-end">
                         <Button
-                        //   onClick={handleSubmit} disabled={loading}
+                            onClick={handleSubmit} disabled={loading}
                         >
                             {loading ? 'Submitting...' : 'Submit'}
                         </Button>
@@ -68,40 +93,54 @@ export default function TestimonialDialog() {
             </Dialog>
 
             {/* Testimonials Table using ShadCN */}
-            <div className="mt-6 p-6">
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead>Avatar</TableHead>
-                            <TableHead>Name</TableHead>
-                            <TableHead>Message</TableHead>
-                            <TableHead>Date</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {/* {testimonials.map((t) => (
-                            <TableRow key={t.id}>
-                                <TableCell>
-                                    {t.avatar ? (
-                                        <Image
-                                            src={t.avatar}
-                                            alt={t.name}
-                                            width={40}
-                                            height={40}
-                                            className="rounded-full"
-                                        />
-                                    ) : (
-                                        <span className="text-gray-400">No image</span>
-                                    )}
-                                </TableCell>
-                                <TableCell className="font-medium">{t.name}</TableCell>
-                                <TableCell>{t.message}</TableCell>
-                                <TableCell>{t.date}</TableCell>
+            {
+                testimonials?.length > 0 ?
+                <div className="mt-6 p-6">
+                    <Table className={"border p-2"}>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Avatar</TableHead>
+                                <TableHead>Name</TableHead>
+                                <TableHead>Message</TableHead>
+                                <TableHead>Date</TableHead>
                             </TableRow>
-                        ))} */}
-                    </TableBody>
-                </Table>
-            </div>
+                        </TableHeader>
+                        <TableBody>
+                            {testimonials?.map((t) => (
+                                <TableRow key={t.id}>
+                                    <TableCell>
+                                        {t.avatar ? (
+                                            <Image
+                                                src={t?.avatar || "/user.png"}
+                                                alt={t.name}
+                                                width={40}
+                                                height={40}
+                                                className="rounded-full"
+                                            />
+                                        ) : (
+                                            <img
+                                                src={ "/user.png"}
+                                                alt={t?.name}
+                                                width={40}
+                                                height={40}
+                                                className="rounded-full"
+                                            />
+                                        )}
+                                    </TableCell>
+                                    <TableCell className="font-medium">{t.name}</TableCell>
+                                    <TableCell>{t.message}</TableCell>
+                                    <TableCell>{t.date}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+                    :
+                    <div>
+                        No testimonials found
+                    </div>
+            }
+
         </div>
     );
 }

@@ -64,11 +64,11 @@ export const dsaFormSchema = z.object({
 
     // Documents (File objects)
     // These are required based on the provided config in the previous turn for 'UserCreationForm'
-    aadhar: z.any().refine(val => val instanceof File, "Aadhar document is required."),
-    pan: z.any().refine(val => val instanceof File, "PAN document is required."),
-    photo: z.any().refine(val => val instanceof File, "Photo is required."),
-    bank_doc: z.any().refine(val => val instanceof File, "Passbook photo/Cancelled Cheque is required."),
-    education_certificate: z.any().refine(val => val instanceof File, "Education Certificate is required."),
+    // aadhar: z.any().refine(val => val instanceof File, "Aadhar document is required."),
+    // pan: z.any().refine(val => val instanceof File, "PAN document is required."),
+    // photo: z.any().refine(val => val instanceof File, "Photo is required."),
+    // bank_doc: z.any().refine(val => val instanceof File, "Passbook photo/Cancelled Cheque is required."),
+    // education_certificate: z.any().refine(val => val instanceof File, "Education Certificate is required."),
 });
 
 /**

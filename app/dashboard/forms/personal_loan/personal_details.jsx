@@ -59,6 +59,8 @@ const PersonalDetails = ({ formData, setFormData, errors, setErrors }) => {
     handleValueChange("dob", dateValue);
   };
 
+  console.log(errors);
+  
   return (
     <div className="flex flex-col p-4">
       {/* Prerequisits Section */}
