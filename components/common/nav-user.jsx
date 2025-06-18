@@ -18,9 +18,24 @@ import {
 import { UserRoundCheck } from "lucide-react";
 // import { logout } from "@/api/file_action";
 import Link from "next/link";
+import { logout } from "@/lib/actions/logout";
+import toast from "react-hot-toast";
 
 export function NavUser({ user }) {
   const { isMobile } = useSidebar();
+
+  const handleLogout = async () => {
+    try {
+     const res= await logout();
+      console.log("Logout successful");
+      if(res?.success) {
+        window.location.href = "/login"; // Adjust the redirect path as needed
+      }
+    } catch (error) {
+      toast.error("Logout failed. Please try again.");
+      console.error("Logout failed:", error);
+    }
+  }
 
   return (
     <SidebarMenu>
@@ -67,8 +82,7 @@ export function NavUser({ user }) {
             <DropdownMenuItem
               onClick={() => {
                 localStorage && localStorage.removeItem("token");
-                // logout();
-                
+                handleLogout();
               }}
             >
               <LogOut />

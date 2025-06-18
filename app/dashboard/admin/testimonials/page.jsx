@@ -14,7 +14,6 @@ export default function TestimonialDialog() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [testimonials, setTestimonials] = useState([]);
-    console.log(testimonials);
 
     useEffect(() => {
         const fetchTestimonials = async () => {
@@ -96,6 +95,7 @@ export default function TestimonialDialog() {
             {
                 testimonials?.length > 0 ?
                 <div className="mt-6 p-6">
+                      <div className='pb-4 font-bold text-lg'>Testimonial Data</div>
                     <Table className={"border p-2"}>
                         <TableHeader>
                             <TableRow>

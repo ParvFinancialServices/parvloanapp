@@ -4,6 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { BigHeading, Heading } from "../common/Common";
+import { useEffect, useState } from "react";
+import { getAllTestimonials } from "@/lib/actions/testimonials";
 
 const testimonials = [
     {
@@ -39,7 +41,7 @@ const testimonials = [
 ]
 
 
-export function TestimonialCard({ imgSrc, name, location, rating, description }) {
+export function TestimonialCard({ imgSrc, name, location, rating, message }) {
     return (
         <div className="break-inside-avoid p-4 rounded-lg bg-gray-100 relative h-96 w-full">
             <div className="flex flex-wrap items-center gap-4">
@@ -66,7 +68,7 @@ export function TestimonialCard({ imgSrc, name, location, rating, description })
                 ))}
             </div>
             <div className="mt-6">
-                <p className="text-gray-800 text-sm leading-relaxed">{description}</p>
+                <p className="text-gray-800 text-sm leading-relaxed">{message}</p>
             </div>
         </div>
     );
@@ -132,7 +134,7 @@ export default function TestimonialSection() {
         ),
         appendDots: (dots) => (
             <div
-            className="bg-red-200"
+                className="bg-red-200"
                 style={{
                     backgroundColor: "#fff",
                     borderRadius: "10px",
@@ -152,6 +154,25 @@ export default function TestimonialSection() {
         ],
     };
 
+
+
+    // call testimonials API
+    // const [testimonials, setTestimonials] = useState([]);
+
+    // useEffect(() => {
+    //     const fetchTestimonials = async () => {
+    //         const res = await getAllTestimonials();
+
+    //         if (res.success) {
+    //             setTestimonials(res.testimonials);
+    //         } else {
+    //             setError(res.message);
+    //         }
+    //     };
+
+    //     fetchTestimonials();
+    // }, []);
+
     return (
         <div className="bg-white px-4 w-full">
             <div className="max-w-6xl mx-auto px-4 py-12">
@@ -160,7 +181,7 @@ export default function TestimonialSection() {
                 </div>
                 <BigHeading className="text-center pb-9" text={'What Our Customers Say'} />
                 <Slider {...settings}
-                className=" max-w-5xl"
+                    className=" max-w-5xl"
                 >
                     {testimonials.map((testimonial, index) => (
                         <div key={index} className="px-2">

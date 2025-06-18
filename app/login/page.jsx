@@ -2,8 +2,7 @@
 
 import { login } from "@/lib/actions/login.js";
 import { Input } from "@/components/ui/input";
-import { useEffect, useState } from "react";
-// import { useUserState } from "../dashboard/store/index";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { getAuth, signInWithCustomToken } from "firebase/auth";
 import app from "@/lib/firebaseConfig";
@@ -15,8 +14,6 @@ import { Loader2Icon } from "lucide-react";
 import { EyeOff } from "lucide-react";
 import { Eye } from "lucide-react";
 import { useUserState } from "../dashboard/store";
-import { AlignLeft } from "lucide-react";
-import { ArrowLeft } from "lucide-react";
 import { ChevronLeft } from "lucide-react";
 
 export default function LoginPage() {
@@ -24,15 +21,10 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState(null); // State for displaying error messages
+  const [error, setError] = useState(null); 
 
   const router = useRouter();
-  const userState = useUserState(); // Your global user state
-
-  // No need for a cleanup useEffect for isLoading in this specific case,
-  // as it's directly tied to the submission lifecycle.
-
-  // Renamed to handleSubmit for clarity, as it's the form's submission handler.
+  const userState = useUserState();
   async function handleSubmit(e) {
     e.preventDefault(); // Prevent default browser form submission
     setIsLoading(true); // Start loading
@@ -44,7 +36,6 @@ export default function LoginPage() {
       console.log("Login API response:", res);
 
       if (res.error) {
-        // If your API returns an error message
         setError(res.error);
       } else {
         // 2. Sign in with Firebase Custom Token
@@ -79,18 +70,18 @@ export default function LoginPage() {
             break;
           default:
             // Fallback for unhandled roles, or a default dashboard
-            router.push("/dashboard/connector");
+            router.push("/dashboard/rm");
             break;
         }
       }
     } catch (error) {
-      // Catch any unexpected errors during the process (e.g., network issues, Firebase errors)
       console.error("Login process error:", error);
       // Firebase specific error handling can be more granular here
       setError("An unexpected error occurred. Please try again.");
-    } finally {
-      setIsLoading(false); // Stop loading regardless of success or failure
     }
+    //  finally {
+    //   setIsLoading(false); // Stop loading regardless of success or failure
+    // }
   }
 
   // Removed the redundant useEffect for console logging username/password
@@ -148,7 +139,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword((prev) => !prev)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/8 cursor-pointer text-gray-500 hover:text-gray-700 focus:outline-none"
+                  className="absolute right-3 top-9 transform -translate-y-1/4 cursor-pointer text-gray-500 hover:text-gray-700 focus:outline-none"
                   tabIndex={-1}
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
